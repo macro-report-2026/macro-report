@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>MACRO ETF — 2026-03-31</title><style>
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+<title>MACRO ETF v6.0 — 2026-03-31</title><style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
 :root{
---bg:#06080e;--s1:#0c1017;--s2:#111621;--s3:#171d2a;--hv:#1c2436;
---bd:rgba(255,255,255,0.04);--bd2:rgba(255,255,255,0.08);--bd3:rgba(255,255,255,0.12);
+--bg:#050810;--s1:#0a0f1a;--s2:#0f1524;--s3:#141b2e;--hv:#1a2340;
+--bd:rgba(255,255,255,0.04);--bd2:rgba(255,255,255,0.08);--bd3:rgba(255,255,255,0.14);
 --tx:#e8ecf4;--t2:#8892a8;--t3:#4a5568;
 --bl:#3b82f6;--bll:#60a5fa;--bld:rgba(59,130,246,0.08);
 --cy:#22d3ee;--cyd:rgba(34,211,238,0.06);
@@ -13,84 +13,59 @@
 --or:#f59e0b;--ord:rgba(245,158,11,0.06);
 --pp:#a78bfa;--ppd:rgba(167,139,250,0.06);
 --yl:#eab308;
---mono:'JetBrains Mono',monospace;--sans:'Noto Sans KR',-apple-system,'Segoe UI',sans-serif;
+--neon:rgba(59,130,246,0.15);--neon2:rgba(34,211,238,0.1);
+--mono:'Space Mono',monospace;--sans:'Noto Sans KR',-apple-system,sans-serif;
 }
-*{margin:0;padding:0;box-sizing:border-box;}
+*{margin:0;padding:0;box-sizing:border-box;max-width:100%;}
+html,body{overflow-x:hidden;width:100%;}
 body{background:var(--bg);color:var(--tx);font-family:var(--sans);line-height:1.7;-webkit-font-smoothing:antialiased;font-size:13px;}
-.page{max-width:1440px;margin:0 auto;padding:28px 24px;}
-
-/* Header */
+.page{max-width:1440px;margin:0 auto;padding:28px 24px;overflow-x:hidden;}
 .hdr{display:flex;align-items:center;justify-content:space-between;padding:16px 0 20px;border-bottom:1px solid var(--bd2);margin-bottom:24px;flex-wrap:wrap;gap:8px;}
-.hdr-l h1{font-size:20px;font-weight:900;letter-spacing:-0.5px;}
+.hdr-l h1{font-size:22px;font-weight:900;letter-spacing:-0.5px;}
 .hdr-l h1 em{font-style:normal;background:linear-gradient(135deg,var(--bl),var(--cy));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.hdr-l .sub{font-size:10px;color:var(--t3);font-family:var(--mono);letter-spacing:1px;margin-top:2px;}
+.hdr-l .sub{font-size:10px;color:var(--t3);font-family:var(--mono);letter-spacing:1.5px;margin-top:2px;}
 .hdr-r{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
 .hdr-r .dt{font-family:var(--mono);font-size:11px;color:var(--t2);}
-.hdr-r .dt-sub{font-family:var(--mono);font-size:9px;color:var(--t3);}
 .chip{display:inline-flex;align-items:center;gap:6px;padding:5px 16px;border-radius:100px;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;font-family:var(--mono);}
 .chip .dot{width:6px;height:6px;border-radius:50%;background:currentColor;animation:pulse 2s ease-in-out infinite;}
 @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
 .chip.off{background:var(--rdd);color:var(--rd);border:1px solid rgba(239,68,68,.15);}
 .chip.on{background:var(--gnd);color:var(--gn);border:1px solid rgba(34,197,94,.15);}
 .chip.neut{background:var(--ord);color:var(--or);border:1px solid rgba(245,158,11,.15);}
-
-/* Section framework */
 .sec{margin-bottom:24px;}
-.sec-h{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:3px;color:var(--t3);margin-bottom:4px;display:flex;align-items:center;gap:10px;font-family:var(--mono);}
+.sec-h{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:3px;color:var(--t3);margin-bottom:4px;display:flex;align-items:center;gap:10px;font-family:var(--mono);cursor:pointer;}
 .sec-h::after{content:'';flex:1;height:1px;background:var(--bd2);}
 .sec-sum{font-size:11px;color:var(--t2);margin-bottom:12px;font-style:italic;}
 .card{background:var(--s1);border:1px solid var(--bd);border-radius:14px;padding:20px;position:relative;overflow:hidden;}
 .card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,var(--bl),transparent 60%);}
 .card h3{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--t3);margin-bottom:12px;font-family:var(--mono);}
-
-/* Insight / Executive Summary */
-.ins{background:var(--s1);border:1px solid var(--bd2);border-radius:14px;padding:22px 26px;position:relative;overflow:hidden;}
-.ins::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;}
-.ins.off::before{background:linear-gradient(90deg,var(--rd),var(--or),transparent 80%);}
-.ins.on::before{background:linear-gradient(90deg,var(--gn),var(--cy),transparent 80%);}
-.ins.neut::before{background:linear-gradient(90deg,var(--or),var(--yl),transparent 80%);}
-.ins .it{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2.5px;margin-bottom:14px;font-family:var(--mono);}
-.ins.off .it{color:var(--or);}
-.ins.on .it{color:var(--gn);}
-.ins.neut .it{color:var(--or);}
-.ins .ib{font-size:14px;color:var(--t2);line-height:2;}
-.ins .ib strong{color:var(--tx);font-weight:600;}
-.hr{color:var(--rd)!important;font-weight:600!important;}
-.hg{color:var(--gn)!important;font-weight:600!important;}
-.hb{color:var(--bl)!important;font-weight:600!important;}
-.ho{color:var(--or)!important;font-weight:600!important;}
-.score-flow{background:rgba(255,255,255,.025);border:1px solid var(--bd);border-radius:8px;padding:10px 16px;margin:10px 0;font-size:14px;font-family:var(--mono);letter-spacing:.3px;}
-.verdict-box{border-radius:12px;padding:16px 20px;margin-top:14px;}
-.verdict-box.off{background:linear-gradient(135deg,rgba(239,68,68,.05),rgba(245,158,11,.03));border:1px solid rgba(239,68,68,.12);}
-.verdict-box.positive{background:linear-gradient(135deg,rgba(34,197,94,.05),rgba(34,211,238,.03));border:1px solid rgba(34,197,94,.12);}
-.verdict-box.neutral{background:linear-gradient(135deg,rgba(245,158,11,.05),rgba(234,179,8,.03));border:1px solid rgba(245,158,11,.12);}
-.verdict-box .vt{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:2px;margin-bottom:6px;font-family:var(--mono);}
-.verdict-box.off .vt{color:var(--rd);}
-.verdict-box.positive .vt{color:var(--gn);}
-.verdict-box.neutral .vt{color:var(--or);}
-.verdict-box .vb{font-size:14px;font-weight:500;line-height:1.7;}
-.exec-chip{display:inline-flex;align-items:center;gap:5px;border-radius:6px;padding:4px 14px;font-size:10px;font-weight:600;margin-top:12px;font-family:var(--mono);}
-.exec-chip.no{background:var(--ord);border:1px solid rgba(245,158,11,.12);color:var(--or);}
-.exec-chip.yes{background:var(--gnd);border:1px solid rgba(34,197,94,.12);color:var(--gn);}
-
-/* Hub (Score + State + Portfolio) */
-.hub{display:grid;grid-template-columns:200px 1fr 1fr;gap:12px;margin-bottom:24px;}
-.hub-center{display:flex;flex-direction:column;align-items:center;justify-content:center;}
-.big-score{font-size:56px;font-weight:900;line-height:1;font-family:var(--mono);}
-.big-score.neg{color:var(--rd);}
-.big-score.pos{color:var(--gn);}
-.big-score.zero{color:var(--or);}
-.score-lbl{font-size:9px;color:var(--t3);text-transform:uppercase;letter-spacing:2px;margin-top:6px;font-family:var(--mono);}
-.quality-badge{font-size:8px;font-weight:700;padding:2px 10px;border-radius:100px;margin-top:8px;font-family:var(--mono);}
-.quality-badge.good{background:var(--gnd);color:var(--gn);}
-.quality-badge.partial{background:var(--ord);color:var(--or);}
-.quality-badge.poor{background:var(--rdd);color:var(--rd);}
-/* ★ 매수 매력도 별 표시 */
+.pill{font-size:6px;padding:2px 6px;border-radius:100px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;font-family:var(--mono);}
+.pill.idx{background:var(--bld);color:var(--bl);}
+.pill.vol{background:var(--rdd);color:var(--rd);}
+.pill.bnd{background:var(--ord);color:var(--or);}
+.pill.cmd{background:rgba(234,179,8,.08);color:var(--yl);}
+.pill.cry{background:var(--ppd);color:var(--pp);}
+.pill.etf{background:var(--cyd);color:var(--cy);}
+.pill.glb{background:rgba(34,211,238,.06);color:var(--cy);}
+.pill.sec{background:rgba(167,139,250,.06);color:var(--pp);}
+/* Gauge */
+.gauge-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.gauge-svg{width:180px;height:100px;}
+.gauge-score{font-size:42px;font-weight:900;font-family:var(--mono);margin-top:-10px;}
+.gauge-score.neg{color:var(--rd);}.gauge-score.pos{color:var(--gn);}.gauge-score.zero{color:var(--or);}
+.gauge-label{font-size:8px;color:var(--t3);text-transform:uppercase;letter-spacing:2px;font-family:var(--mono);margin-top:4px;}
+/* Stars */
 .stars{font-size:14px;margin-top:6px;letter-spacing:2px;}
-.stars .on{color:var(--yl);}
-.stars .off{color:var(--t3);opacity:.3;}
+.stars .on{color:var(--yl);}.stars .off{color:var(--t3);opacity:.3;}
 .attract-lbl{font-size:8px;color:var(--t2);margin-top:2px;font-family:var(--mono);}
-
+/* Sparkline */
+.spark-svg{width:80px;height:24px;vertical-align:middle;margin-left:6px;}
+/* Stress bar */
+.stress-bar{height:8px;background:rgba(255,255,255,.04);border-radius:4px;overflow:hidden;position:relative;}
+.stress-fill{height:100%;border-radius:4px;transition:width .6s ease;}
+.stress-label{font-size:8px;color:var(--t2);margin-top:2px;font-family:var(--mono);}
+/* Hub */
+.hub{display:grid;grid-template-columns:220px 1fr 1fr;gap:12px;margin-bottom:24px;}
 .meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
 .meta-item .ml{font-size:8px;color:var(--t3);font-family:var(--mono);text-transform:uppercase;letter-spacing:1px;}
 .meta-item .mv{font-size:13px;font-weight:600;margin-top:2px;}
@@ -99,36 +74,49 @@ body{background:var(--bg);color:var(--tx);font-family:var(--sans);line-height:1.
 .total-val .sym{font-size:18px;color:var(--t3);font-weight:400;}
 .pnl-row{font-family:var(--mono);font-size:12px;margin-top:6px;}
 .pnl-row.up{color:var(--gn);}.pnl-row.dn{color:var(--rd);}
-
+/* Insight */
+.ins{background:var(--s1);border:1px solid var(--bd2);border-radius:14px;padding:22px 26px;position:relative;overflow:hidden;}
+.ins::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;}
+.ins.off::before{background:linear-gradient(90deg,var(--rd),var(--or),transparent 80%);}
+.ins.on::before{background:linear-gradient(90deg,var(--gn),var(--cy),transparent 80%);}
+.ins.neut::before{background:linear-gradient(90deg,var(--or),var(--yl),transparent 80%);}
+.ins .it{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2.5px;margin-bottom:14px;font-family:var(--mono);}
+.ins.off .it{color:var(--or);}.ins.on .it{color:var(--gn);}.ins.neut .it{color:var(--or);}
+.ins .ib{font-size:14px;color:var(--t2);line-height:2;}
+.ins .ib strong{color:var(--tx);font-weight:600;}
+.hr{color:var(--rd)!important;font-weight:600!important;}
+.hg{color:var(--gn)!important;font-weight:600!important;}
+.hb{color:var(--bl)!important;font-weight:600!important;}
+.ho{color:var(--or)!important;font-weight:600!important;}
+.score-flow{background:rgba(255,255,255,.025);border:1px solid var(--bd);border-radius:8px;padding:10px 16px;margin:10px 0;font-size:14px;font-family:var(--mono);letter-spacing:.3px;overflow-x:auto;}
+.verdict-box{border-radius:12px;padding:16px 20px;margin-top:14px;}
+.verdict-box.off{background:linear-gradient(135deg,rgba(239,68,68,.05),rgba(245,158,11,.03));border:1px solid rgba(239,68,68,.12);}
+.verdict-box.positive{background:linear-gradient(135deg,rgba(34,197,94,.05),rgba(34,211,238,.03));border:1px solid rgba(34,197,94,.12);}
+.verdict-box.neutral{background:linear-gradient(135deg,rgba(245,158,11,.05),rgba(234,179,8,.03));border:1px solid rgba(245,158,11,.12);}
+.verdict-box .vt{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:2px;margin-bottom:6px;font-family:var(--mono);}
+.verdict-box.off .vt{color:var(--rd);}.verdict-box.positive .vt{color:var(--gn);}.verdict-box.neutral .vt{color:var(--or);}
+.verdict-box .vb{font-size:14px;font-weight:500;line-height:1.7;}
+.exec-chip{display:inline-flex;align-items:center;gap:5px;border-radius:6px;padding:4px 14px;font-size:10px;font-weight:600;margin-top:12px;font-family:var(--mono);}
+.exec-chip.no{background:var(--ord);border:1px solid rgba(245,158,11,.12);color:var(--or);}
+.exec-chip.yes{background:var(--gnd);border:1px solid rgba(34,197,94,.12);color:var(--gn);}
 /* Market Pulse */
 .mkt-cat{margin-bottom:16px;}
 .mkt-cat-hdr{display:flex;align-items:center;gap:8px;margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid var(--bd);}
-.mkt-cat-hdr .icon{font-size:14px;}
-.mkt-cat-hdr .cat-name{font-size:11px;font-weight:700;color:var(--tx);}
-.mkt-cat-hdr .cat-note{font-size:10px;color:var(--t2);margin-left:auto;font-style:italic;}
+.mkt-cat-hdr .icon{font-size:14px;}.mkt-cat-hdr .cat-name{font-size:11px;font-weight:700;}
 .mkt-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;}
 .mkt-card{background:var(--s1);border:1px solid var(--bd);border-radius:10px;padding:12px 14px;transition:all .12s;}
 .mkt-card:hover{background:var(--hv);transform:translateY(-1px);}
-.mkt-card.alert{border-color:rgba(239,68,68,.2);background:rgba(239,68,68,.02);}
-.mkt-card.spread-card{border-color:rgba(167,139,250,.15);background:rgba(167,139,250,.02);}
+.mkt-card.alert{border-color:rgba(239,68,68,.2);}
+.mkt-card.spread-card{border-color:rgba(167,139,250,.15);}
 .mkt-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;}
 .mkt-name{font-family:var(--mono);font-size:10px;font-weight:600;color:var(--t2);}
 .mkt-sub{font-size:8px;color:var(--t3);margin-top:1px;}
-.pill{font-size:6px;padding:2px 6px;border-radius:100px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;font-family:var(--mono);}
-.pill.idx{background:var(--bld);color:var(--bl);}
-.pill.vol{background:var(--rdd);color:var(--rd);}
-.pill.bnd{background:var(--ord);color:var(--or);}
-.pill.cmd{background:rgba(234,179,8,.08);color:var(--yl);}
-.pill.cry{background:var(--ppd);color:var(--pp);}
-.pill.etf{background:var(--cyd);color:var(--cy);}
 .mkt-price{font-size:17px;font-weight:700;margin-bottom:2px;font-family:var(--mono);}
 .mkt-chg{font-family:var(--mono);font-size:10px;font-weight:500;}
 .mkt-chg.up{color:var(--gn);}.mkt-chg.dn{color:var(--rd);}.mkt-chg.fl{color:var(--t3);}
-
 /* Score Breakdown */
 .score-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;}
-.factor-card{background:var(--s1);border:1px solid var(--bd);border-radius:10px;padding:12px 10px;text-align:center;transition:all .15s;}
-.factor-card:hover{background:var(--hv);transform:translateY(-1px);}
+.factor-card{background:var(--s1);border:1px solid var(--bd);border-radius:10px;padding:12px 10px;text-align:center;}
 .factor-card.dim{opacity:.35;border-style:dashed;}
 .factor-card .fl{font-family:var(--mono);font-size:8px;color:var(--t3);text-transform:uppercase;letter-spacing:1px;margin-bottom:5px;}
 .factor-card .fp{font-size:17px;font-weight:700;margin-bottom:3px;font-family:var(--mono);}
@@ -137,396 +125,300 @@ body{background:var(--bg);color:var(--tx);font-family:var(--sans);line-height:1.
 .factor-card .fn{font-size:9px;color:var(--t2);line-height:1.4;}
 .factor-bar{height:3px;border-radius:2px;margin-top:8px;background:rgba(255,255,255,.03);overflow:hidden;}
 .factor-bar .fill{height:100%;border-radius:2px;}
-
+/* Scenario Cards */
+.scenario-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px;margin-top:10px;}
+.scenario-card{background:var(--s2);border:1px solid var(--bd);border-radius:10px;padding:12px;text-align:center;}
+.scenario-card .sc-label{font-size:10px;font-weight:700;margin-bottom:4px;}
+.scenario-card .sc-score{font-size:24px;font-weight:900;font-family:var(--mono);}
+.scenario-card .sc-state{font-size:9px;color:var(--t2);font-family:var(--mono);}
 /* Trend Table */
-.trend-tbl{width:100%;border-collapse:separate;border-spacing:0;}
+.trend-tbl{width:100%;border-collapse:separate;border-spacing:0;display:block;overflow-x:auto;}
 .trend-tbl th{font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--t3);padding:8px 12px;text-align:left;border-bottom:1px solid var(--bd2);font-family:var(--mono);}
 .trend-tbl td{padding:10px 12px;border-bottom:1px solid var(--bd);font-size:12px;font-family:var(--mono);}
 .trend-tbl tr:hover td{background:var(--hv);}
 .trend-tbl .grp-hdr td{background:var(--s2);font-size:9px;font-weight:700;color:var(--t2);text-transform:uppercase;letter-spacing:2px;padding:6px 12px;}
 .trend-tag{font-size:9px;font-weight:600;padding:3px 8px;border-radius:6px;display:inline-block;}
-.trend-tag.up{background:var(--gnd);color:var(--gn);}
-.trend-tag.dn{background:var(--rdd);color:var(--rd);}
-.trend-tag.side{background:var(--ord);color:var(--or);}
-.trend-tag.na{background:rgba(255,255,255,.03);color:var(--t3);}
+.trend-tag.up{background:var(--gnd);color:var(--gn);}.trend-tag.dn{background:var(--rdd);color:var(--rd);}
+.trend-tag.side{background:var(--ord);color:var(--or);}.trend-tag.na{background:rgba(255,255,255,.03);color:var(--t3);}
 .rsi-bar{width:60px;height:6px;background:rgba(255,255,255,.04);border-radius:3px;display:inline-block;vertical-align:middle;margin-left:6px;position:relative;}
 .rsi-fill{height:100%;border-radius:3px;position:absolute;left:0;top:0;}
 .rsi-mark{position:absolute;top:-2px;bottom:-2px;width:1px;background:var(--t3);}
-
 /* Portfolio */
 .port-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
 .donut-wrap{display:flex;align-items:center;gap:24px;margin-bottom:12px;}
 .donut-svg{width:140px;height:140px;flex-shrink:0;}
-.legend{display:flex;flex-direction:column;gap:7px;}
-.legend-row{display:flex;align-items:center;gap:8px;font-size:12px;}
+.legend{display:flex;flex-direction:column;gap:7px;}.legend-row{display:flex;align-items:center;gap:8px;font-size:12px;}
 .legend-dot{width:10px;height:10px;border-radius:3px;flex-shrink:0;}
-.legend-row .ln{color:var(--t2);flex:1;}
-.legend-row .lv{font-family:var(--mono);font-weight:600;}
 .bucket-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
 .bucket-card{background:var(--s2);border:1px solid var(--bd);border-radius:10px;padding:12px;position:relative;overflow:hidden;}
 .bucket-card::before{content:'';position:absolute;top:0;left:0;bottom:0;width:3px;border-radius:10px 0 0 10px;}
-.bucket-card.core::before{background:var(--bl);}
-.bucket-card.def::before{background:var(--gn);}
-.bucket-card.hb::before{background:var(--pp);}
-.bucket-card.tac::before{background:var(--or);}
-.bucket-card .bk-name{font-size:11px;font-weight:700;}
-.bucket-card .bk-desc{font-size:8px;color:var(--t3);line-height:1.3;margin-bottom:6px;}
-.bucket-card .bk-row{display:flex;justify-content:space-between;align-items:baseline;}
-.bucket-card .bk-pct{font-family:var(--mono);font-size:16px;font-weight:700;}
-.bucket-card .bk-tgt{font-family:var(--mono);font-size:9px;color:var(--t3);}
-.bucket-card .bk-gap{font-family:var(--mono);font-size:10px;font-weight:600;margin-top:3px;}
-.bk-gap.over{color:var(--rd);}.bk-gap.under{color:var(--bl);}.bk-gap.ok{color:var(--gn);}
+.bucket-card.core::before{background:var(--bl);}.bucket-card.def::before{background:var(--gn);}
+.bucket-card.hb::before{background:var(--pp);}.bucket-card.tac::before{background:var(--or);}
 .bk-bar{height:4px;background:rgba(255,255,255,.03);border-radius:2px;margin-top:6px;position:relative;}
-.bk-fill{height:100%;border-radius:2px;}
-.bk-target{position:absolute;top:-2px;bottom:-2px;width:2px;background:var(--tx);opacity:.25;border-radius:1px;}
-
-/* Holdings list */
+.bk-fill{height:100%;border-radius:2px;}.bk-target{position:absolute;top:-2px;bottom:-2px;width:2px;background:var(--tx);opacity:.25;}
+/* Holding cards */
 .holding-list{display:flex;flex-direction:column;gap:8px;}
-.holding-card{background:var(--s2);border:1px solid var(--bd);border-radius:10px;padding:12px 14px;display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;transition:all .12s;}
-.holding-card:hover{border-color:var(--bd2);}
-.h-left{display:flex;flex-direction:column;gap:2px;}
-.h-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
-.h-ticker{font-family:var(--mono);font-size:13px;font-weight:700;}
-.h-name{font-size:9px;color:var(--t3);}
+.holding-card{background:var(--s2);border:1px solid var(--bd);border-radius:10px;padding:12px 14px;display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;}
+.h-left{display:flex;flex-direction:column;gap:2px;}.h-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.h-ticker{font-family:var(--mono);font-size:13px;font-weight:700;}.h-name{font-size:9px;color:var(--t3);}
 .h-badge{font-size:7px;font-weight:700;padding:2px 7px;border-radius:100px;text-transform:uppercase;font-family:var(--mono);}
-.h-badge.ov{background:var(--rdd);color:var(--rd);}
-.h-badge.uw{background:var(--bld);color:var(--bl);}
-.h-badge.bal{background:var(--gnd);color:var(--gn);}
-.h-desc{font-size:9px;color:var(--t3);line-height:1.3;margin-top:1px;}
+.h-badge.ov{background:var(--rdd);color:var(--rd);}.h-badge.uw{background:var(--bld);color:var(--bl);}.h-badge.bal{background:var(--gnd);color:var(--gn);}
 .h-bar{height:4px;background:rgba(255,255,255,.03);border-radius:2px;margin-top:4px;position:relative;}
-.h-bar-fill{height:100%;border-radius:2px;}
-.h-bar-target{position:absolute;top:-2px;bottom:-2px;width:2px;background:var(--tx);opacity:.3;border-radius:1px;}
+.h-bar-fill{height:100%;border-radius:2px;}.h-bar-target{position:absolute;top:-2px;bottom:-2px;width:2px;background:var(--tx);opacity:.3;}
 .h-meta{font-family:var(--mono);font-size:9px;color:var(--t3);margin-top:3px;}
 .h-right{text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:2px;}
 .h-value{font-family:var(--mono);font-size:13px;font-weight:700;}
 .h-pnl{font-family:var(--mono);font-size:10px;font-weight:600;}
-.h-pnl.up{color:var(--gn);}.h-pnl.dn{color:var(--rd);}.h-pnl.fl{color:var(--t3);}
+.h-pnl.up{color:var(--gn);}.h-pnl.dn{color:var(--rd);}
 .h-daily{font-family:var(--mono);font-size:9px;font-weight:500;}
 .h-daily.up{color:var(--gn);}.h-daily.dn{color:var(--rd);}.h-daily.fl{color:var(--t3);}
 .h-rebal{font-family:var(--mono);font-size:10px;font-weight:600;}
 .h-rebal.neg{color:var(--rd);}.h-rebal.pos{color:var(--bl);}
-
-/* ★ v5.3: Strategy & Actions (combined) */
-.strat-act-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-.strat-wrap{background:var(--s1);border:1px solid var(--bd);border-radius:12px;padding:18px;position:relative;overflow:hidden;}
-.strat-wrap::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--or),var(--pp),transparent 70%);}
-.strat-header{margin-bottom:14px;}
-.strat-regime{font-size:13px;font-weight:600;margin-bottom:6px;}
-.strat-comment{font-size:11px;color:var(--t2);line-height:1.6;}
-.strat-cols{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;}
-.strat-col{background:var(--s2);border:1px solid var(--bd);border-radius:8px;padding:10px 14px;}
-.strat-col-title{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:2px;margin-bottom:6px;font-family:var(--mono);}
-.strat-col-body{font-size:12px;line-height:1.8;}
-.strat-tac-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--t3);margin-bottom:8px;padding-top:10px;border-top:1px solid var(--bd);font-family:var(--mono);}
-.strat-tac-list{display:flex;flex-direction:column;gap:6px;}
-.strat-tac-item{padding:6px 0;border-bottom:1px solid var(--bd);}
-.strat-tac-item:last-child{border-bottom:none;}
-.strat-tac-action{font-size:11px;font-weight:600;}
-.strat-tac-detail{font-size:10px;color:var(--t3);margin-top:2px;}
-
-/* Action Signals column */
+/* Actions */
 .act-col{background:var(--s1);border:1px solid var(--bd);border-radius:12px;padding:16px;position:relative;overflow:hidden;}
 .act-col::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;}
 .act-col.trim::before{background:linear-gradient(90deg,var(--rd),var(--or));}
 .act-col.buy::before{background:linear-gradient(90deg,var(--gn),var(--cy));}
 .act-col.block::before{background:linear-gradient(90deg,var(--pp),var(--or));}
 .act-col h4{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:2px;margin-bottom:10px;font-family:var(--mono);}
-.act-col.trim h4{color:var(--rd);}
-.act-col.buy h4{color:var(--gn);}
-.act-col.block h4{color:var(--pp);}
-.act-item{padding:8px 0;border-bottom:1px solid var(--bd);}
-.act-item:last-child{border-bottom:none;}
+.act-col.trim h4{color:var(--rd);}.act-col.buy h4{color:var(--gn);}.act-col.block h4{color:var(--pp);}
+.act-item{padding:8px 0;border-bottom:1px solid var(--bd);}.act-item:last-child{border-bottom:none;}
 .act-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:2px;}
 .act-ticker{font-family:var(--mono);font-size:12px;font-weight:700;}
 .act-amt{font-family:var(--mono);font-size:11px;font-weight:600;}
 .act-amt.neg{color:var(--rd);}.act-amt.pos{color:var(--gn);}
 .act-note{font-size:10px;color:var(--t2);line-height:1.5;}
-
-/* ★ v5.3: Risk Monitor 3-tier */
-.risk-box{background:var(--s1);border:1px solid var(--bd);border-radius:12px;padding:16px 20px;position:relative;overflow:hidden;}
-.risk-section{margin-bottom:12px;}
-.risk-section:last-child{margin-bottom:0;}
+/* Risk */
+.risk-box{background:var(--s1);border:1px solid var(--bd);border-radius:12px;padding:16px 20px;}
+.risk-section{margin-bottom:12px;}.risk-section:last-child{margin-bottom:0;}
 .risk-tier-label{font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:2px;font-family:var(--mono);margin-bottom:6px;padding:3px 10px;border-radius:4px;display:inline-block;}
 .risk-tier-label.critical{background:var(--rdd);color:var(--rd);}
 .risk-tier-label.warning{background:var(--ord);color:var(--or);}
 .risk-tier-label.watch{background:rgba(255,255,255,.04);color:var(--t2);}
-.risk-list{display:flex;flex-direction:column;gap:5px;margin-top:4px;}
-.risk-item{display:flex;align-items:flex-start;gap:10px;font-size:12px;color:var(--t2);line-height:1.6;}
+.risk-item{display:flex;align-items:flex-start;gap:10px;font-size:12px;color:var(--t2);line-height:1.6;margin-bottom:4px;}
 .risk-item .ri{flex-shrink:0;margin-top:2px;font-size:10px;}
-.risk-item.critical .ri{color:var(--rd);}
-.risk-item.warning .ri{color:var(--or);}
-.risk-item.watch .ri{color:var(--t3);}
-
-/* Conclusion / Execution Plan */
-.conclusion{background:linear-gradient(135deg,rgba(59,130,246,.02),rgba(34,211,238,.01));border:1px solid rgba(59,130,246,.08);border-radius:14px;padding:24px;position:relative;overflow:hidden;}
-.conclusion::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--bl),var(--cy),transparent);}
-.conc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:14px;}
-.conc-item .cl{font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--t3);margin-bottom:2px;font-family:var(--mono);}
-.conc-item .cv{font-size:14px;font-weight:600;}
-.step-title{font-size:12px;font-weight:700;margin-bottom:10px;padding-top:14px;border-top:1px solid var(--bd);}
-.step-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px;}
-.step-card{display:flex;align-items:center;gap:10px;background:var(--s1);border:1px solid var(--bd);border-radius:9px;padding:10px 14px;border-left:3px solid var(--t3);}
-.step-card.trim{border-left-color:var(--rd);}
-.step-card.buy{border-left-color:var(--gn);}
-.step-card.block{border-left-color:var(--pp);}
-.step-num{font-size:18px;font-weight:800;width:24px;text-align:center;flex-shrink:0;font-family:var(--mono);}
-.step-card.trim .step-num{color:var(--rd);}
-.step-card.buy .step-num{color:var(--gn);}
-.step-card.block .step-num{color:var(--pp);}
-.step-body{display:flex;flex-direction:column;}
-.step-body .st{font-family:var(--mono);font-size:12px;font-weight:700;}
-.step-body .sa{font-size:10px;color:var(--t2);}
-.step-body .sm{font-family:var(--mono);font-size:11px;font-weight:600;}
-.step-card.trim .sm{color:var(--rd);}
-.step-card.buy .sm{color:var(--gn);}
-.step-card.block .sm{color:var(--pp);}
-.step-pri{font-size:7px;font-weight:700;padding:2px 6px;border-radius:100px;text-transform:uppercase;margin-left:auto;flex-shrink:0;font-family:var(--mono);}
-.step-pri.HIGH{background:var(--rdd);color:var(--rd);}
-.step-pri.MID{background:var(--gnd);color:var(--gn);}
-.step-pri.LOW{background:var(--ppd);color:var(--pp);}
-.conc-text{font-size:13px;color:var(--t2);line-height:1.8;}
-.conc-text strong{color:var(--tx);font-weight:600;}
-
-/* Learning Notes */
-.learn-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
-.learn-card{background:var(--s1);border:1px solid var(--bd);border-radius:10px;padding:14px 16px;position:relative;overflow:hidden;}
-.learn-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,var(--cy),transparent 60%);}
-.learn-card .lc-title{font-size:11px;font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:6px;}
-.learn-card .lc-title .lc-icon{font-size:14px;}
-.learn-card .lc-body{font-size:11px;color:var(--t2);line-height:1.7;}
-.learn-card .lc-body strong{color:var(--tx);font-weight:600;}
-.learn-card .lc-val{font-family:var(--mono);font-size:13px;font-weight:700;margin:4px 0;}
-
-/* Narrative */
+/* Narr */
 .narr-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
 .narr-block{background:var(--s1);border:1px solid var(--bd);border-radius:10px;padding:14px 16px;position:relative;overflow:hidden;}
 .narr-block::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,var(--or),transparent 60%);}
-.narr-title{font-size:12px;font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:6px;}
-.narr-body{display:flex;flex-direction:column;gap:5px;}
+.narr-title{font-size:12px;font-weight:700;margin-bottom:8px;}.narr-body{display:flex;flex-direction:column;gap:5px;}
 .narr-item{font-size:11px;color:var(--t2);line-height:1.7;padding-left:8px;border-left:2px solid var(--bd2);}
-.narr-item strong{color:var(--tx);font-weight:600;}
-
-/* Performance History Charts */
+/* Learning */
+.learn-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.learn-card{background:var(--s1);border:1px solid var(--bd);border-radius:10px;padding:14px 16px;position:relative;overflow:hidden;}
+.learn-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,var(--cy),transparent 60%);}
+.learn-card .lc-title{font-size:11px;font-weight:700;margin-bottom:6px;}
+.learn-card .lc-body{font-size:11px;color:var(--t2);line-height:1.7;}
+.learn-card .lc-val{font-family:var(--mono);font-size:13px;font-weight:700;margin:4px 0;}
+/* Chart */
 .chart-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
-
+/* Waterfall */
+.waterfall-grid{display:flex;gap:6px;align-items:flex-end;height:120px;margin:12px 0;}
+.wf-bar{display:flex;flex-direction:column;align-items:center;flex:1;}
+.wf-bar-inner{width:100%;border-radius:4px 4px 0 0;min-height:4px;transition:height .4s ease;}
+.wf-bar-label{font-size:8px;font-family:var(--mono);color:var(--t2);margin-top:4px;}
+.wf-bar-val{font-size:9px;font-family:var(--mono);font-weight:700;margin-bottom:2px;}
+/* Correlation heatmap */
+.corr-grid{display:grid;gap:2px;margin:12px 0;}
+.corr-cell{width:100%;aspect-ratio:1;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:8px;font-family:var(--mono);font-weight:700;}
+.corr-label{font-size:9px;font-family:var(--mono);color:var(--t2);text-align:center;padding:4px;}
 /* Footer */
 .footer{margin-top:28px;padding-top:12px;border-top:1px solid var(--bd);text-align:center;font-family:var(--mono);font-size:8px;color:var(--t3);letter-spacing:1.5px;}
-
 /* Animations */
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
 .an{animation:fadeUp .35s ease both;}
 .d1{animation-delay:.03s;}.d2{animation-delay:.06s;}.d3{animation-delay:.09s;}.d4{animation-delay:.12s;}
 .d5{animation-delay:.15s;}.d6{animation-delay:.18s;}.d7{animation-delay:.21s;}.d8{animation-delay:.24s;}
+/* Responsive */
+@media(max-width:1100px){.hub,.port-grid,.narr-grid,.learn-grid{grid-template-columns:1fr;}.mkt-grid{grid-template-columns:repeat(3,1fr);}.chart-grid{grid-template-columns:1fr;}}
+@media(max-width:768px){.page{padding:16px 10px;}.mkt-grid{grid-template-columns:repeat(2,1fr);}.score-grid{grid-template-columns:repeat(2,1fr);}.hub{grid-template-columns:1fr;}}
+@media print{body{background:#fff;color:#111;}.card,.ins,.risk-box,.act-col{border:1px solid #ddd;background:#fafafa;}
+.chip{border:1px solid #999;}.mkt-card{border:1px solid #ddd;background:#fafafa;}}
 
-/* ★ v5.3: Responsive — Global overflow fix */
-*{max-width:100%;}
-html,body{overflow-x:hidden;width:100%;}
-.page{overflow-x:hidden;}
-.trend-tbl{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;}
-.holding-card{overflow:hidden;}
+/* v6.0 additions */
+.pill.glb{background:rgba(34,211,238,.06);color:#22d3ee;}
+.pill.sec{background:rgba(167,139,250,.06);color:#a78bfa;}
+@media print{
+  body{background:#fff!important;color:#111!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .card,.ins,.risk-box,.act-col{border:1px solid #ddd!important;background:#fafafa!important;}
+  .chip{border:1px solid #999!important;}
+  .mkt-card{border:1px solid #ddd!important;background:#fafafa!important;}
+  .page{max-width:100%!important;padding:10px!important;}
+}
 
-@media(max-width:1100px){
-.hub,.port-grid,.strat-act-grid{grid-template-columns:1fr;}
-.score-grid{grid-template-columns:repeat(3,1fr);}
-.mkt-grid{grid-template-columns:repeat(3,1fr);}
-.step-grid{grid-template-columns:1fr;}
-.conc-grid{grid-template-columns:repeat(2,1fr);}
-.learn-grid,.narr-grid{grid-template-columns:1fr;}
-.strat-cols{grid-template-columns:1fr;}
-}
-@media(max-width:768px){
-.page{padding:16px 10px;}
-.mkt-grid{grid-template-columns:repeat(2,1fr);}
-.score-grid{grid-template-columns:repeat(2,1fr);}
-.bucket-grid{grid-template-columns:1fr;}
-.hdr{flex-direction:column;align-items:flex-start;}
-.hub{grid-template-columns:1fr;}
-.port-grid{grid-template-columns:1fr;}
-.conc-grid{grid-template-columns:1fr;}
-.step-grid{grid-template-columns:1fr;}
-.meta-grid{grid-template-columns:1fr 1fr;}
-.chart-grid{grid-template-columns:1fr;}
-.holding-card{grid-template-columns:1fr;gap:4px;}
-.h-right{align-items:flex-start;text-align:left;flex-direction:row;flex-wrap:wrap;gap:6px;}
-.mkt-price{font-size:14px;}
-.big-score{font-size:40px;}
-.total-val{font-size:22px;}
-.ins .ib{font-size:12px;}
-.score-flow{font-size:11px;overflow-x:auto;white-space:nowrap;}
-.mkt-cat-hdr{flex-wrap:wrap;}
-.mkt-cat-hdr .cat-note{margin-left:0;margin-top:4px;width:100%;}
-.strat-cols{grid-template-columns:1fr;}
-.act-col{margin-bottom:0;}
-div[style*="grid-template-columns:repeat(3,1fr)"]{grid-template-columns:1fr!important;}
-}
-@media(max-width:400px){
-.mkt-grid{grid-template-columns:1fr;}
-.score-grid{grid-template-columns:1fr;}
-.mkt-price{font-size:13px;}
-.big-score{font-size:32px;}
-}
 </style></head><body>
 <div class="page">
 
 <!-- Header -->
-<div class="hdr an"><div class="hdr-l"><h1><em>MACRO ETF</em> INTELLIGENCE</h1><div class="sub">Daily Report · v5.3</div></div>
-<div class="hdr-r"><div><div class="dt">2026-03-31 15:32 KST</div><div class="dt-sub">데이터 기준: 2026-03-31</div></div><div class="chip off"><span class="dot"></span>RISK OFF</div></div></div>
+<div class="hdr an"><div class="hdr-l"><h1><em>MACRO ETF</em> INTELLIGENCE</h1><div class="sub">v6.0 · Enhanced Analytics</div></div>
+<div class="hdr-r"><div class="dt">2026-03-31 21:02 KST</div><div class="chip off"><span class="dot"></span>RISK OFF</div></div></div>
 
-
-
-<!-- 1. Executive Summary -->
-<div class="ins off an d1"><div class="it">Executive Summary</div><div class="ib">시장이 <strong class="hr">방어 모드</strong>입니다.
-<div class="score-flow"><span style="color:var(--rd);font-weight:700;">VIX(-2)</span> + <span style="color:var(--gn);font-weight:700;">US10Y(+1)</span> + <span style="color:var(--t3);font-weight:700;">Spread(+0)</span> + <span style="color:var(--t3);font-weight:700;">DXY(+0)</span> + <span style="color:var(--t3);font-weight:700;">S&P500(+0)</span> + <span style="color:var(--t3);font-weight:700;">BTC(+0)</span> + <span style="color:var(--rd);font-weight:700;">복합(-1)</span> = <strong style="font-size:16px;">-2점</strong></div>
-<br>VIX 30.6 <strong class="hr">공포</strong>
-<br><br><strong>포트폴리오:</strong> VOO <strong class="hr">7.6%p 초과</strong> / BITU <strong class="hb">9.7%p 부족</strong></div>
-<div class="verdict-box off"><div class="vt">🔴 오늘의 판단</div><div class="vb">관찰일. 매매 금지. 방어 자산(SGOV)만 주시. 다음 실행일까지 대기.</div></div>
+<!-- Executive Summary -->
+<div class="ins off an d1"><div class="it">Executive Summary</div>
+<div class="ib"><div class="score-flow"><span style="color:var(--rd);font-weight:700;">VIX(-2)</span> + <span style="color:var(--gn);font-weight:700;">US10Y(+1)</span> + <span style="color:var(--t3);font-weight:700;">Spread(+0)</span> + <span style="color:var(--t3);font-weight:700;">DXY(+0)</span> + <span style="color:var(--t3);font-weight:700;">S&P500(+0)</span> + <span style="color:var(--t3);font-weight:700;">BTC(+0)</span> + <span style="color:var(--rd);font-weight:700;">CrossAsset(-1)</span> + <span style="color:var(--rd);font-weight:700;">Momentum(-2)</span> + <span style="color:var(--gn);font-weight:700;">Stress(+1)</span> = <strong style="font-size:16px;">-3점</strong></div></div>
+<div class="verdict-box off"><div class="vt">🔴 오늘의 판단</div><div class="vb">관찰일. 방어 자산만 주시.</div></div>
 <div class="exec-chip no">⏸ 관찰일</div></div>
 
-<!-- 2. Hub: Score + State + Portfolio -->
+<!-- Hub: Gauge + State + Portfolio -->
 <div class="hub an d2">
-<div class="card hub-center"><div class="big-score neg">−2</div><div class="score-lbl">Market Score</div>
-<div class="stars"><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="off">★</span></div><div class="attract-lbl">매수매력: 매수 적극 검토</div></div>
-<div class="card"><h3>Market State</h3><div class="meta-grid"><div class="meta-item"><div class="ml">State</div><div class="mv rd">Risk Off</div></div><div class="meta-item"><div class="ml">Regime</div><div class="mv rd">Risk Off</div></div><div class="meta-item"><div class="ml">Tone</div><div class="mv" style="font-size:10px;">변동성 확대 속 방어</div></div><div class="meta-item"><div class="ml">Exec</div><div class="mv rd">NO</div></div></div><div style="font-size:11px;color:var(--t2);line-height:1.5;margin-top:8px;padding-top:8px;border-top:1px solid var(--bd);">거시·추세 일치 → <strong>방어</strong></div></div>
-<div class="card"><h3>Portfolio</h3><div class="total-val"><span class="sym">$</span>104,920</div><div class="pnl-row dn">투자금 $113,758 · 손익 $8,838 (-7.8%)</div><div class="meta-grid" style="margin-top:8px;"><div class="meta-item"><div class="ml">Profile</div><div class="mv bl">Balanced Core</div></div><div class="meta-item"><div class="ml">Top</div><div class="mv">VOO</div></div><div class="meta-item"><div class="ml">Under</div><div class="mv bl">BITU +$10,187</div></div><div class="meta-item"><div class="ml">Over</div><div class="mv rd">VOO −$7,957</div></div></div></div>
+<div class="card gauge-wrap"><svg class="gauge-svg" viewBox="0 0 180 100">
+<path d="M 20,85 A 70,70 0 1,1 160,85" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="12" stroke-linecap="round"/>
+<path d="M 20.0,85.0 A 70,70 0 0,1 58.2,22.6" fill="none" stroke="var(--or)" stroke-width="12" stroke-linecap="round"/>
+<circle cx="58.2" cy="22.6" r="4" fill="var(--or)"/>
+</svg><div class="gauge-score neg">−3</div><div class="gauge-label">Market Score</div>
+<div class="stars"><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="off">★</span></div><div class="attract-lbl">매수매력: 매수 적극 검토</div>
+</div>
+<div class="card"><h3>Market State</h3><div class="meta-grid">
+<div class="meta-item"><div class="ml">State</div><div class="mv rd">Risk Off</div></div>
+<div class="meta-item"><div class="ml">Regime</div><div class="mv rd">Risk Off</div></div>
+<div class="meta-item"><div class="ml">Exec</div><div class="mv rd">NO</div></div>
+<div class="meta-item"><div class="ml">Quality</div><div class="mv">good</div></div>
+</div></div>
+<div class="card"><h3>Portfolio</h3><div class="total-val"><span class="sym">$</span>104,920</div>
+<div class="pnl-row dn">손익 $8,838 (-7.8%)</div></div>
 </div>
 
-<!-- 3. My Portfolio (★ 위로 이동) -->
-<div class="sec an d3"><div class="sec-h">My Portfolio</div><div class="sec-sum">투자금 대비 -7.8%, BITU 손실이 전체의 주 요인</div><div class="port-grid"><div class="card"><h3>Bucket Allocation</h3><div class="donut-wrap"><svg class="donut-svg" viewBox="0 0 160 160"><circle cx="80" cy="80" r="60" fill="none" stroke="rgba(255,255,255,.03)" stroke-width="18"/><circle cx="80" cy="80" r="60" fill="none" stroke="#4a9eff" stroke-width="18" stroke-dasharray="217.1 377.0" stroke-dashoffset="0.0" transform="rotate(-90 80 80)"/><circle cx="80" cy="80" r="60" fill="none" stroke="#4adb8b" stroke-width="18" stroke-dasharray="95.5 377.0" stroke-dashoffset="-217.1" transform="rotate(-90 80 80)"/><circle cx="80" cy="80" r="60" fill="none" stroke="#a78bfa" stroke-width="18" stroke-dasharray="38.8 377.0" stroke-dashoffset="-312.6" transform="rotate(-90 80 80)"/><circle cx="80" cy="80" r="60" fill="none" stroke="#ffab4a" stroke-width="18" stroke-dasharray="25.6 377.0" stroke-dashoffset="-351.4" transform="rotate(-90 80 80)"/></svg><div class="legend"><div class="legend-row"><div class="legend-dot" style="background:#4a9eff;"></div><span class="ln">Core</span><span class="lv">57.6%</span></div><div class="legend-row"><div class="legend-dot" style="background:#4adb8b;"></div><span class="ln">Defensive</span><span class="lv">25.3%</span></div><div class="legend-row"><div class="legend-dot" style="background:#a78bfa;"></div><span class="ln">High Beta</span><span class="lv">10.3%</span></div><div class="legend-row"><div class="legend-dot" style="background:#ffab4a;"></div><span class="ln">Tactical</span><span class="lv">6.8%</span></div></div></div><div class="bucket-grid"><div class="bucket-card core"><div class="bk-name">Core</div><div class="bk-desc">장기 성장 엔진. 시장 전체 수익률을 추종한다.</div><div class="bk-row"><span class="bk-pct" style="color:#4a9eff;">57.6%</span><span class="bk-tgt">목표 50%</span></div><div class="bk-gap over">갭 +7.6%</div><div class="bk-bar"><div class="bk-fill" style="width:58%;background:#4a9eff;"></div><div class="bk-target" style="left:50%;"></div></div></div><div class="bucket-card def"><div class="bk-name">Defensive</div><div class="bk-desc">하락장 완충제. 현금성 자산 + 금으로 손실을 제한한다.</div><div class="bk-row"><span class="bk-pct" style="color:#4adb8b;">25.3%</span><span class="bk-tgt">목표 25%</span></div><div class="bk-gap ok">갭 +0.3%</div><div class="bk-bar"><div class="bk-fill" style="width:25%;background:#4adb8b;"></div><div class="bk-target" style="left:25%;"></div></div></div><div class="bucket-card hb"><div class="bk-name">High Beta</div><div class="bk-desc">공격 성장. 상승장에서 초과 수익을 노린다.</div><div class="bk-row"><span class="bk-pct" style="color:#a78bfa;">10.3%</span><span class="bk-tgt">목표 20%</span></div><div class="bk-gap under">갭 -9.7%</div><div class="bk-bar"><div class="bk-fill" style="width:10%;background:#a78bfa;"></div><div class="bk-target" style="left:20%;"></div></div></div><div class="bucket-card tac"><div class="bk-name">Tactical</div><div class="bk-desc">섹터 배팅. 특정 테마나 에너지 등에 전술적 노출.</div><div class="bk-row"><span class="bk-pct" style="color:#ffab4a;">6.8%</span><span class="bk-tgt">목표 5%</span></div><div class="bk-gap ok">갭 +1.8%</div><div class="bk-bar"><div class="bk-fill" style="width:7%;background:#ffab4a;"></div><div class="bk-target" style="left:5%;"></div></div></div></div></div><div class="card"><h3>Holdings Detail</h3><div class="holding-list"><div class="holding-card">
-<div class="h-left">
+<!-- Market Pulse -->
+<div class="sec an d3"><div class="sec-h">Market Pulse</div><div class="mkt-cat"><div class="mkt-cat-hdr"><span class="icon">📈</span><span class="cat-name">주식시장</span></div><div class="mkt-grid"><div class="mkt-card"><div class="mkt-top"><span class="mkt-name">S&P500</span><span class="pill idx">INDEX</span></div><div class="mkt-price">6,343.72</div><div class="mkt-chg dn">▼ -25.13 (-0.39%)</div></div><div class="mkt-card"><div class="mkt-top"><span class="mkt-name">NASDAQ</span><span class="pill idx">INDEX</span></div><div class="mkt-price">20,794.64</div><div class="mkt-chg dn">▼ -153.72 (-0.73%)</div></div><div class="mkt-card"><div class="mkt-top"><span class="mkt-name">DOW</span><span class="pill idx">INDEX</span></div><div class="mkt-price">45,216.14</div><div class="mkt-chg up">▲ +49.50 (+0.11%)</div></div><div class="mkt-card"><div class="mkt-top"><span class="mkt-name">RUSSELL</span><span class="pill idx">SMALL</span></div><div class="mkt-price">2,414.01</div><div class="mkt-chg dn">▼ -35.69 (-1.46%)</div></div><div class="mkt-card alert"><div class="mkt-top"><span class="mkt-name">VIX</span><span class="pill vol">VOL</span></div><div class="mkt-price">28.65</div><div class="mkt-chg dn">▼ -1.96 (-6.40%)</div></div></div></div><div class="mkt-cat"><div class="mkt-cat-hdr"><span class="icon">🏦</span><span class="cat-name">채권 · 금리 · 신용</span></div><div class="mkt-grid"><div class="mkt-card"><div class="mkt-top"><span class="mkt-name">US10Y</span><span class="pill bnd">10Y</span></div><div class="mkt-price">4.34</div><div class="mkt-chg dn">▼ -0.10 (-2.21%)</div></div><div class="mkt-card"><div class="mkt-top"><span class="mkt-name">US2Y</span><span class="pill bnd">2Y</span></div><div class="mkt-price">3.60</div><div class="mkt-chg dn">▼ -0.01 (-0.25%)</div></div><div class="mkt-card"><div class="mkt-top"><span class="mkt-name">TIP</span><span class="pill bnd">TIPS</span></div><div class="mkt-price">110.35</div><div class="mkt-chg up">▲ +0.68 (+0.62%)</div></div><div class="mkt-card"><div class="mkt-top"><span class="mkt-name">HYG</span><span class="pill bnd">HY BOND</span></div><div class="mkt-price">78.81</div><div class="mkt-chg up">▲ +0.09 (+0.11%)</div></div><div class="mkt-card spread-card"><div class="mkt-top"><span class="mkt-name">SPREAD</span><span class="pill bnd">SPREAD</span></div><div class="mkt-price" style="color:var(--gn);">+0.74%p</div><div class="mkt-sub">10Y-2Y</div></div></div></div><div class="mkt-cat"><div class="mkt-cat-hdr"><span class="icon">💵</span><span class="cat-name">달러 · 환율 · 원자재</span></div><div class="mkt-grid"><div class="mkt-card"><div class="mkt-top"><span class="mkt-name">DXY</span><span class="pill idx">FX</span></div><div class="mkt-price">100.34</div><div class="mkt-chg dn">▼ -0.17 (-0.17%)</div></div><div class="mkt-card"><div class="mkt-top"><span class="mkt-name">USDKRW</span><span class="pill idx">KRW</span></div><div class="mkt-price">1,524.41</div><div class="mkt-chg up">▲ +17.39 (+1.15%)</div></div><div class="mkt-card"><div class="mkt-top"><span class="mkt-name">WTI</span><span class="pill cmd">OIL</span></div><div class="mkt-price">102.95</div><div class="mkt-chg up">▲ +0.07 (+0.07%)</div></div><div class="mkt-card"><div class="mkt-top"><span class="mkt-name">GOLD</span><span class="pill cmd">GOLD</span></div><div class="mkt-price">4,610.50</div><div class="mkt-chg up">▲ +84.50 (+1.87%)</div></div><div class="mkt-card"><div class="mkt-top"><span class="mkt-name">COPPER</span><span class="pill cmd">COPPER</span></div><div class="mkt-price">5.53</div><div class="mkt-chg up">▲ +0.05 (+1.00%)</div></div></div></div><div class="mkt-cat"><div class="mkt-cat-hdr"><span class="icon">₿</span><span class="cat-name">크립토</span></div><div class="mkt-grid"><div class="mkt-card"><div class="mkt-top"><span class="mkt-name">BTC</span><span class="pill cry">CRYPTO</span></div><div class="mkt-price">66,638.39</div><div class="mkt-chg dn">▼ -53.05 (-0.08%)</div></div><div class="mkt-card"><div class="mkt-top"><span class="mkt-name">IBIT</span><span class="pill cry">BTC ETF</span></div><div class="mkt-price">37.68</div><div class="mkt-chg up">▲ +0.28 (+0.75%)</div></div></div></div></div>
+
+<!-- Score Breakdown -->
+<div class="sec an d4"><div class="sec-h">Score Breakdown</div><div class="score-grid"><div class="factor-card"><div class="fl">VIX</div><div class="fp">28.65</div><div class="fsc neg">-2</div><div class="fn">고변동성 구간 [×1.2]</div><div class="factor-bar"><div class="fill" style="width:0%;background:var(--rd);"></div></div></div><div class="factor-card"><div class="fl">US10Y</div><div class="fp">4.34</div><div class="fsc pos">+1</div><div class="fn">금리 중립 구간 + 금리 완화</div><div class="factor-bar"><div class="fill" style="width:75%;background:var(--gn);"></div></div></div><div class="factor-card"><div class="fl">Spread</div><div class="fp">0.74</div><div class="fsc zero">0</div><div class="fn">스프레드 중립 0.74%p [×1.3]</div><div class="factor-bar"><div class="fill" style="width:50%;background:var(--or);"></div></div></div><div class="factor-card"><div class="fl">DXY</div><div class="fp">100.34</div><div class="fsc zero">0</div><div class="fn">달러 중립 구간 [×0.8]</div><div class="factor-bar"><div class="fill" style="width:50%;background:var(--or);"></div></div></div><div class="factor-card"><div class="fl">S&P500</div><div class="fp">6,343.72</div><div class="fsc zero">0</div><div class="fn">주식시장 중립 흐름</div><div class="factor-bar"><div class="fill" style="width:50%;background:var(--or);"></div></div></div><div class="factor-card"><div class="fl">BTC</div><div class="fp">66,638.39</div><div class="fsc zero">0</div><div class="fn">위험선호 중립 구간 [×0.7]</div><div class="factor-bar"><div class="fill" style="width:50%;background:var(--or);"></div></div></div><div class="factor-card"><div class="fl">CrossAsset</div><div class="fp">-1.00</div><div class="fsc neg">-1</div><div class="fn">변동성 경계와 금리 부담 동시 존재</div><div class="factor-bar"><div class="fill" style="width:25%;background:var(--rd);"></div></div></div><div class="factor-card"><div class="fl">Momentum</div><div class="fp">-3.61</div><div class="fsc neg">-2</div><div class="fn">5일 모멘텀 -3.6% 약세 / 20일 모멘텀 -7.8% 약세 / 시장 폭 25% 약화 [×0.8]</div><div class="factor-bar"><div class="fill" style="width:0%;background:var(--rd);"></div></div></div><div class="factor-card"><div class="fl">Stress</div><div class="fp">34.50</div><div class="fsc pos">+1</div><div class="fn">스트레스 34/100 (낮음 — 안정)</div><div class="factor-bar"><div class="fill" style="width:75%;background:var(--gn);"></div></div></div></div></div>
+
+<!-- Scenario Simulation -->
+
+
+<!-- Portfolio Holdings -->
+<div class="sec an d4"><div class="sec-h">Portfolio Holdings</div><div class="holding-list"><div class="holding-card"><div class="h-left">
 <div class="h-top"><span class="h-ticker">VOO</span><span class="h-name">Vanguard S&P 500</span><span class="h-badge ov">OVERWEIGHT</span></div>
-<div class="h-desc">미국 대형주 500 추종 · S&P500 패시브 · 위험: 중</div>
 <div class="h-bar"><div class="h-bar-fill" style="width:58%;background:#4a9eff;"></div><div class="h-bar-target" style="left:50%;"></div></div>
 <div class="h-meta">57.6% → 50.0% · 104주 · 평단 $532.04</div>
-</div>
-<div class="h-right">
+</div><div class="h-right">
 <div class="h-value">$60,417</div>
 <div class="h-pnl up">+$5,085 (+9.2%)</div>
-<div class="h-daily dn">금일 -0.35%</div>
 <div class="h-rebal neg">리밸 −$7,957</div>
-</div>
-</div><div class="holding-card">
-<div class="h-left">
+</div></div><div class="holding-card"><div class="h-left">
 <div class="h-top"><span class="h-ticker">SGOV</span><span class="h-name">iShares 0-3M Treasury</span><span class="h-badge bal">BALANCED</span></div>
-<div class="h-desc">미국 초단기 국채 · 현금 대용 · 위험: 매우 낮음</div>
 <div class="h-bar"><div class="h-bar-fill" style="width:13%;background:#4adb8b;"></div><div class="h-bar-target" style="left:15%;"></div></div>
 <div class="h-meta">13.2% → 15.0% · 138주 · 평단 $100.42</div>
-</div>
-<div class="h-right">
+</div><div class="h-right">
 <div class="h-value">$13,891</div>
 <div class="h-pnl up">+$33 (+0.2%)</div>
-<div class="h-daily up">금일 +0.01%</div>
 <div class="h-rebal pos">리밸 +$1,847</div>
-</div>
-</div><div class="holding-card">
-<div class="h-left">
+</div></div><div class="holding-card"><div class="h-left">
 <div class="h-top"><span class="h-ticker">IAUM</span><span class="h-name">iShares Gold Micro</span><span class="h-badge bal">BALANCED</span></div>
-<div class="h-desc">금 현물 · 인플레이션 헷지 · 위험: 낮음</div>
 <div class="h-bar"><div class="h-bar-fill" style="width:12%;background:#4adb8b;"></div><div class="h-bar-target" style="left:10%;"></div></div>
 <div class="h-meta">12.1% → 10.0% · 282주 · 평단 $35.94</div>
-</div>
-<div class="h-right">
+</div><div class="h-right">
 <div class="h-value">$12,690</div>
 <div class="h-pnl up">+$2,555 (+25.2%)</div>
-<div class="h-daily up">금일 +0.04%</div>
 <div class="h-rebal neg">리밸 −$2,198</div>
-</div>
-</div><div class="holding-card">
-<div class="h-left">
+</div></div><div class="holding-card"><div class="h-left">
 <div class="h-top"><span class="h-ticker">BITU</span><span class="h-name">ProShares Bitcoin 2x</span><span class="h-badge uw">UNDERWEIGHT</span></div>
-<div class="h-desc">비트코인 2배 레버리지 · 위험: 매우 높음</div>
 <div class="h-bar"><div class="h-bar-fill" style="width:10%;background:#a78bfa;"></div><div class="h-bar-target" style="left:20%;"></div></div>
 <div class="h-meta">10.3% → 20.0% · 964주 · 평단 $28.64</div>
-</div>
-<div class="h-right">
+</div><div class="h-right">
 <div class="h-value">$10,797</div>
-<div class="h-pnl dn">$-16,812 (-60.9%)</div>
-<div class="h-daily up">금일 +1.54%</div>
+<div class="h-pnl dn">$16,812 (-60.9%)</div>
 <div class="h-rebal pos">리밸 +$10,187</div>
-</div>
-</div><div class="holding-card">
-<div class="h-left">
+</div></div><div class="holding-card"><div class="h-left">
 <div class="h-top"><span class="h-ticker">XLE</span><span class="h-name">Energy Select SPDR</span><span class="h-badge bal">BALANCED</span></div>
-<div class="h-desc">에너지 섹터 · 유가 연동 · 위험: 높음</div>
 <div class="h-bar"><div class="h-bar-fill" style="width:7%;background:#ffab4a;"></div><div class="h-bar-target" style="left:5%;"></div></div>
 <div class="h-meta">6.8% → 5.0% · 115주 · 평단 $59.34</div>
-</div>
-<div class="h-right">
+</div><div class="h-right">
 <div class="h-value">$7,125</div>
 <div class="h-pnl up">+$301 (+4.4%)</div>
-<div class="h-daily dn">금일 -0.96%</div>
 <div class="h-rebal neg">리밸 −$1,879</div>
-</div>
-</div></div></div></div></div>
+</div></div></div></div>
 
-<!-- 4. Market Pulse (★ 재구성) -->
-<div class="sec an d3"><div class="sec-h">Market Pulse</div><div class="mkt-cat"><div class="mkt-cat-hdr"><span class="icon">📈</span><span class="cat-name">주식시장</span><span class="cat-note">보합 · 공포 구간</span></div><div class="mkt-grid"><div class="mkt-card"><div class="mkt-top"><span class="mkt-name">S&P500</span><span class="pill idx">INDEX</span></div><div class="mkt-price">6,343.72</div><div class="mkt-chg dn">▼ -25.13 (-0.39%)</div></div><div class="mkt-card"><div class="mkt-top"><span class="mkt-name">NASDAQ</span><span class="pill idx">INDEX</span></div><div class="mkt-price">20,794.64</div><div class="mkt-chg dn">▼ -153.72 (-0.73%)</div></div><div class="mkt-card"><div class="mkt-top"><span class="mkt-name">DOW</span><span class="pill idx">INDEX</span></div><div class="mkt-price">45,216.14</div><div class="mkt-chg up">▲ +49.50 (+0.11%)</div></div><div class="mkt-card"><div class="mkt-top"><span class="mkt-name">RUSSELL</span><span class="pill idx">SMALL</span></div><div class="mkt-price">2,414.01</div><div class="mkt-sub">중소형주</div><div class="mkt-chg dn">▼ -35.69 (-1.46%)</div></div><div class="mkt-card alert"><div class="mkt-top"><span class="mkt-name">VIX</span><span class="pill vol">VOL</span></div><div class="mkt-price" style="color:var(--rd);">30.61</div><div class="mkt-chg dn">▼ -0.44 (-1.42%)</div></div></div></div><div class="mkt-cat"><div class="mkt-cat-hdr"><span class="icon">🏦</span><span class="cat-name">채권 · 금리 · 신용</span><span class="cat-note">스프레드 정상 · 금리 중립 · 신용 안정</span></div><div class="mkt-grid"><div class="mkt-card"><div class="mkt-top"><span class="mkt-name">US10Y</span><span class="pill bnd">10Y</span></div><div class="mkt-price">4.34</div><div class="mkt-chg dn">▼ -0.10 (-2.21%)</div></div><div class="mkt-card"><div class="mkt-top"><span class="mkt-name">US2Y</span><span class="pill bnd">2Y</span></div><div class="mkt-price">3.60</div><div class="mkt-chg dn">▼ -0.01 (-0.25%)</div></div><div class="mkt-card spread-card"><div class="mkt-top"><span class="mkt-name">SPREAD</span><span class="pill bnd">SPREAD</span></div><div class="mkt-price" style="color:var(--gn);">+0.74%p</div><div class="mkt-sub">10Y-2Y 장단기차</div><div class="mkt-chg" style="color:var(--gn);">정상(+)</div></div><div class="mkt-card"><div class="mkt-top"><span class="mkt-name">TIP</span><span class="pill bnd">TIPS</span></div><div class="mkt-price">110.35</div><div class="mkt-sub">인플레이션 기대</div><div class="mkt-chg up">▲ +0.68 (+0.62%)</div></div><div class="mkt-card"><div class="mkt-top"><span class="mkt-name">HYG</span><span class="pill bnd">HY BOND</span></div><div class="mkt-price">78.81</div><div class="mkt-sub">신용 리스크</div><div class="mkt-chg up">▲ +0.09 (+0.11%)</div></div></div></div><div class="mkt-cat"><div class="mkt-cat-hdr"><span class="icon">💵</span><span class="cat-name">달러 · 환율 · 원자재</span><span class="cat-note">유가 $102 고점 · 달러 중립 · 원화 약세 ₩1,507</span></div><div class="mkt-grid"><div class="mkt-card"><div class="mkt-top"><span class="mkt-name">DXY</span><span class="pill idx">FX</span></div><div class="mkt-price">100.48</div><div class="mkt-chg dn">▼ -0.03 (-0.03%)</div></div><div class="mkt-card"><div class="mkt-top"><span class="mkt-name">USDKRW</span><span class="pill idx">KRW</span></div><div class="mkt-price">1,507.02</div><div class="mkt-chg dn">▼ -1.34 (-0.09%)</div></div><div class="mkt-card"><div class="mkt-top"><span class="mkt-name">WTI</span><span class="pill cmd">OIL</span></div><div class="mkt-price">102.46</div><div class="mkt-chg dn">▼ -0.42 (-0.41%)</div></div><div class="mkt-card"><div class="mkt-top"><span class="mkt-name">GOLD</span><span class="pill cmd">GOLD</span></div><div class="mkt-price">4,590.20</div><div class="mkt-chg up">▲ +64.20 (+1.42%)</div></div><div class="mkt-card"><div class="mkt-top"><span class="mkt-name">COPPER</span><span class="pill cmd">COPPER</span></div><div class="mkt-price">5.50</div><div class="mkt-chg up">▲ +0.03 (+0.49%)</div></div></div></div><div class="mkt-cat"><div class="mkt-cat-hdr"><span class="icon">₿</span><span class="cat-name">크립토</span><span class="cat-note">크립토 보합</span></div><div class="mkt-grid"><div class="mkt-card"><div class="mkt-top"><span class="mkt-name">BTC</span><span class="pill cry">CRYPTO</span></div><div class="mkt-price">67,361.52</div><div class="mkt-chg up">▲ +1,406.60 (+2.13%)</div></div><div class="mkt-card"><div class="mkt-top"><span class="mkt-name">IBIT</span><span class="pill cry">BTC ETF</span></div><div class="mkt-price">37.68</div><div class="mkt-sub">BTC 현물 ETF</div><div class="mkt-chg up">▲ +0.28 (+0.75%)</div></div></div></div></div>
+<!-- Analytics -->
+<div class="sec an d5"><div class="sec-h">Analytics</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
 
-<!-- 5. Score Breakdown -->
-<div class="sec an d4"><div class="sec-h">Score Breakdown</div><div class="sec-sum">VIX·CrossAsset이 하락 주도, US10Y만 호재</div><div class="score-grid"><div class="factor-card"><div class="fl">VIX</div><div class="fp">30.61</div><div class="fsc neg">-2</div><div class="fn">고변동성 구간</div><div class="factor-bar"><div class="fill" style="width:0%;background:var(--rd);"></div></div></div>
-<div class="factor-card"><div class="fl">US10Y</div><div class="fp">4.34</div><div class="fsc pos">+1</div><div class="fn">금리 중립 구간 + 금리 완화</div><div class="factor-bar"><div class="fill" style="width:75%;background:var(--gn);"></div></div></div>
-<div class="factor-card"><div class="fl">Spread</div><div class="fp">0.74</div><div class="fsc zero">0</div><div class="fn">스프레드 중립 0.74%p</div><div class="factor-bar"><div class="fill" style="width:50%;background:var(--or);"></div></div></div>
-<div class="factor-card"><div class="fl">DXY</div><div class="fp">100.48</div><div class="fsc zero">0</div><div class="fn">달러 중립 구간</div><div class="factor-bar"><div class="fill" style="width:50%;background:var(--or);"></div></div></div>
-<div class="factor-card"><div class="fl">S&P500</div><div class="fp">6,343.72</div><div class="fsc zero">0</div><div class="fn">주식시장 중립 흐름</div><div class="factor-bar"><div class="fill" style="width:50%;background:var(--or);"></div></div></div>
-<div class="factor-card"><div class="fl">BTC</div><div class="fp">67,361.52</div><div class="fsc zero">0</div><div class="fn">위험선호 중립 구간</div><div class="factor-bar"><div class="fill" style="width:50%;background:var(--or);"></div></div></div>
-<div class="factor-card"><div class="fl">CrossAsset</div><div class="fp">-1.00</div><div class="fsc neg">-1</div><div class="fn">변동성 경계와 금리 부담 동시 존재</div><div class="factor-bar"><div class="fill" style="width:25%;background:var(--rd);"></div></div></div></div></div>
 
-<!-- 6. Macro Commentary -->
-<div class="sec an d5"><div class="sec-h">Macro Commentary</div><div class="narr-grid"><div class="narr-block"><div class="narr-title"><span>📰</span> Macro Headline</div><div class="narr-body"><div class="narr-item">오늘 시장은 변동성 확대와 방어 심리가 우세한 리스크 관리 중심 구간으로 해석된다.</div><div class="narr-item">현재 시장은 방어적 성격이 우세한 리스크 오프 성향으로 해석된다.</div></div></div><div class="narr-block"><div class="narr-title"><span>⚡</span> Key Drivers</div><div class="narr-body"><div class="narr-item">우호 요인: <strong>스프레드 정상 0.74%p</strong></div><div class="narr-item">부담 요인: <strong>VIX 고변동성, 원화 약세 ₩1,507, 유가 고점 부담</strong></div><div class="narr-item">중립 요인: <strong>금리 중립, 달러 중립 이상, 구리 보합, 위험선호 중립</strong></div></div></div><div class="narr-block"><div class="narr-title"><span>🔗</span> Cross-Asset Reading</div><div class="narr-body"><div class="narr-item">변동성 확대와 금리 부담이 동시에 나타나는 구간에서는 공격적 멀티플 확장이 쉽지 않다.</div><div class="narr-item">방어 장세에서는 현금성 자산과 변동성 관리가 우선이며, 고베타 자산 확대는 신중해야 한다.</div></div></div><div class="narr-block"><div class="narr-title"><span>🏗</span> Macro Structure</div><div class="narr-body"><div class="narr-item">현재 시장의 핵심 변수는 지수 상승 여부보다 변동성 레벨 자체이며, 이는 단기 체결 전략에도 직접 영향을 준다.</div><div class="narr-item">달러가 중립 이상 수준을 유지하면 위험자산 반등이 이어지더라도 속도는 제한될 수 있다.</div><div class="narr-item">원화가 1,507원으로 약세를 보이고 있어, 미국 주식 추가 매수 시 환율 고점 리스크를 감안해야 한다.</div><div class="narr-item">유가 고점은 인플레이션 기대를 다시 자극할 수 있어 금리 민감 자산에 부담 요인으로 작용할 수 있다.</div><div class="narr-item">구리 가격은 보합 수준으로, 뚜렷한 경기 방향 신호는 제한적이다.</div></div></div><div class="narr-block"><div class="narr-title"><span>💼</span> Portfolio Implication</div><div class="narr-body"><div class="narr-item">포트폴리오 관점에서는 방어 자산과 현금성 비중 유지가 우선이며, 고금리 환경에서 고변동 자산 추격매수는 보수적으로 접근하는 것이 바람직하다.</div><div class="narr-item">실행 측면에서는 고변동 자산 신규 확대보다 현금성 및 방어 자산 유지가 우선이다.</div></div></div></div></div>
-
-<!-- 7. Trend & Momentum -->
-<div class="sec an d6"><div class="sec-h">Trend & Momentum</div><div class="sec-sum">보유 5종목 중 3종목 하락 추세, 2종목 Oversold</div><div class="card" style="overflow-x:auto;"><table class="trend-tbl"><thead><tr><th>종목</th><th>현재가</th><th>추세</th><th>RSI (14)</th><th>RSI 신호</th><th>MA20</th><th>MA60</th><th>금일</th></tr></thead><tbody><tr class="grp-hdr"><td colspan="8">보유 종목</td></tr><tr><td><strong>VOO</strong></td><td><span style="font-weight:600;">580.93</span></td><td><span class="trend-tag dn">Downtrend</span></td><td>27.1<div class="rsi-bar"><div class="rsi-fill" style="width:27.1%;background:var(--gn);"></div><div class="rsi-mark" style="left:30%;"></div><div class="rsi-mark" style="left:70%;"></div></div></td><td><span class="mv gn">Oversold</span></td><td style="font-family:var(--mono);">610.4</td><td style="font-family:var(--mono);">625.9</td><td><span class="mkt-chg dn">-0.35%</span></td></tr><tr><td><strong>BITU</strong></td><td><span style="font-weight:600;">11.20</span></td><td><span class="trend-tag dn">Downtrend</span></td><td>39.0<div class="rsi-bar"><div class="rsi-fill" style="width:38.98%;background:var(--bl);"></div><div class="rsi-mark" style="left:30%;"></div><div class="rsi-mark" style="left:70%;"></div></div></td><td><span class="mv ">Neutral</span></td><td style="font-family:var(--mono);">12.6</td><td style="font-family:var(--mono);">16.2</td><td><span class="mkt-chg up">+1.54%</span></td></tr><tr><td><strong>SGOV</strong></td><td><span style="font-weight:600;">100.66</span></td><td><span class="trend-tag up">Uptrend</span></td><td>100.0<div class="rsi-bar"><div class="rsi-fill" style="width:100.0%;background:var(--rd);"></div><div class="rsi-mark" style="left:30%;"></div><div class="rsi-mark" style="left:70%;"></div></div></td><td><span class="mv rd">Overbought</span></td><td style="font-family:var(--mono);">100.5</td><td style="font-family:var(--mono);">100.2</td><td><span class="mkt-chg up">+0.01%</span></td></tr><tr><td><strong>IAUM</strong></td><td><span style="font-weight:600;">45.00</span></td><td><span class="trend-tag dn">Downtrend</span></td><td>38.4<div class="rsi-bar"><div class="rsi-fill" style="width:38.35%;background:var(--bl);"></div><div class="rsi-mark" style="left:30%;"></div><div class="rsi-mark" style="left:70%;"></div></div></td><td><span class="mv ">Neutral</span></td><td style="font-family:var(--mono);">48.2</td><td style="font-family:var(--mono);">48.6</td><td><span class="mkt-chg up">+0.04%</span></td></tr><tr><td><strong>XLE</strong></td><td><span style="font-weight:600;">61.96</span></td><td><span class="trend-tag up">Strong Uptrend</span></td><td>76.7<div class="rsi-bar"><div class="rsi-fill" style="width:76.7%;background:var(--rd);"></div><div class="rsi-mark" style="left:30%;"></div><div class="rsi-mark" style="left:70%;"></div></div></td><td><span class="mv rd">Overbought</span></td><td style="font-family:var(--mono);">58.5</td><td style="font-family:var(--mono);">53.5</td><td><span class="mkt-chg dn">-0.96%</span></td></tr><tr class="grp-hdr"><td colspan="8">관찰 종목</td></tr><tr><td><strong>TLT</strong></td><td><span style="font-weight:600;">86.78</span></td><td><span class="trend-tag dn">Downtrend</span></td><td>46.6<div class="rsi-bar"><div class="rsi-fill" style="width:46.57%;background:var(--bl);"></div><div class="rsi-mark" style="left:30%;"></div><div class="rsi-mark" style="left:70%;"></div></div></td><td><span class="mv ">Neutral</span></td><td style="font-family:var(--mono);">87.3</td><td style="font-family:var(--mono);">87.6</td><td><span class="mkt-chg up">+1.33%</span></td></tr><tr><td><strong>TIP</strong></td><td><span style="font-weight:600;">110.35</span></td><td><span class="trend-tag side">Sideways</span></td><td>45.5<div class="rsi-bar"><div class="rsi-fill" style="width:45.5%;background:var(--bl);"></div><div class="rsi-mark" style="left:30%;"></div><div class="rsi-mark" style="left:70%;"></div></div></td><td><span class="mv ">Neutral</span></td><td style="font-family:var(--mono);">110.8</td><td style="font-family:var(--mono);">110.7</td><td><span class="mkt-chg up">+0.62%</span></td></tr><tr><td><strong>HYG</strong></td><td><span style="font-weight:600;">78.81</span></td><td><span class="trend-tag dn">Downtrend</span></td><td>38.9<div class="rsi-bar"><div class="rsi-fill" style="width:38.86%;background:var(--bl);"></div><div class="rsi-mark" style="left:30%;"></div><div class="rsi-mark" style="left:70%;"></div></div></td><td><span class="mv ">Neutral</span></td><td style="font-family:var(--mono);">79.5</td><td style="font-family:var(--mono);">80.1</td><td><span class="mkt-chg up">+0.11%</span></td></tr><tr><td><strong>IBIT</strong></td><td><span style="font-weight:600;">37.68</span></td><td><span class="trend-tag dn">Downtrend</span></td><td>40.7<div class="rsi-bar"><div class="rsi-fill" style="width:40.69%;background:var(--bl);"></div><div class="rsi-mark" style="left:30%;"></div><div class="rsi-mark" style="left:70%;"></div></div></td><td><span class="mv ">Neutral</span></td><td style="font-family:var(--mono);">39.8</td><td style="font-family:var(--mono);">43.4</td><td><span class="mkt-chg up">+0.75%</span></td></tr><tr class="grp-hdr"><td colspan="8">주요 지수</td></tr><tr><td><strong>S&P500</strong></td><td><span style="font-weight:600;">6,343.72</span></td><td><span class="trend-tag dn">Downtrend</span></td><td>27.7<div class="rsi-bar"><div class="rsi-fill" style="width:27.72%;background:var(--gn);"></div><div class="rsi-mark" style="left:30%;"></div><div class="rsi-mark" style="left:70%;"></div></div></td><td><span class="mv gn">Oversold</span></td><td style="font-family:var(--mono);">6,649.4</td><td style="font-family:var(--mono);">6,823.9</td><td><span class="mkt-chg dn">-0.39%</span></td></tr><tr><td><strong>NASDAQ</strong></td><td><span style="font-weight:600;">20,794.64</span></td><td><span class="trend-tag dn">Downtrend</span></td><td>28.8<div class="rsi-bar"><div class="rsi-fill" style="width:28.79%;background:var(--gn);"></div><div class="rsi-mark" style="left:30%;"></div><div class="rsi-mark" style="left:70%;"></div></div></td><td><span class="mv gn">Oversold</span></td><td style="font-family:var(--mono);">22,126.1</td><td style="font-family:var(--mono);">22,844.2</td><td><span class="mkt-chg dn">-0.73%</span></td></tr><tr><td><strong>DOW</strong></td><td><span style="font-weight:600;">45,216.14</span></td><td><span class="trend-tag dn">Downtrend</span></td><td>30.1<div class="rsi-bar"><div class="rsi-fill" style="width:30.11%;background:var(--gn);"></div><div class="rsi-mark" style="left:30%;"></div><div class="rsi-mark" style="left:70%;"></div></div></td><td><span class="mv gn">Oversold</span></td><td style="font-family:var(--mono);">46,783.3</td><td style="font-family:var(--mono);">48,467.7</td><td><span class="mkt-chg up">+0.11%</span></td></tr><tr><td><strong>RUSSELL</strong></td><td><span style="font-weight:600;">2,414.01</span></td><td><span class="trend-tag dn">Downtrend</span></td><td>35.7<div class="rsi-bar"><div class="rsi-fill" style="width:35.66%;background:var(--bl);"></div><div class="rsi-mark" style="left:30%;"></div><div class="rsi-mark" style="left:70%;"></div></div></td><td><span class="mv ">Neutral</span></td><td style="font-family:var(--mono);">2,514.8</td><td style="font-family:var(--mono);">2,599.8</td><td><span class="mkt-chg dn">-1.46%</span></td></tr><tr><td><strong>BTC</strong></td><td><span style="font-weight:600;">67,361.52</span></td><td><span class="trend-tag side">Sideways</span></td><td>44.5<div class="rsi-bar"><div class="rsi-fill" style="width:44.51%;background:var(--bl);"></div><div class="rsi-mark" style="left:30%;"></div><div class="rsi-mark" style="left:70%;"></div></div></td><td><span class="mv ">Neutral</span></td><td style="font-family:var(--mono);">70,010.1</td><td style="font-family:var(--mono);">69,601.0</td><td><span class="mkt-chg up">+2.13%</span></td></tr></tbody></table></div></div>
-
-<!-- 8. Strategy & Actions (★ 통합) -->
-<div class="sec an d7"><div class="sec-h">Strategy & Actions</div><div class="sec-sum">축소 3건, 매수 0건, 차단 1건</div>
-<div style="margin-bottom:12px;"><div class="strat-wrap">
-<div class="strat-header"><div class="strat-regime">Regime: <span style="color:var(--rd);font-weight:700;">Risk Off</span></div><div class="strat-comment">위험회피 우선 구간</div><div class="strat-comment">현금성 및 방어 자산 중심 대응 필요</div></div>
-<div class="strat-cols"><div class="strat-col"><div class="strat-col-title" style="color:var(--gn);">선호 자산</div><div class="strat-col-body"><span style="color:var(--gn);font-weight:600;">SGOV</span>, <span style="color:var(--gn);font-weight:600;">IAUM</span></div></div>
-<div class="strat-col"><div class="strat-col-title" style="color:var(--rd);">비선호 · 회피</div><div class="strat-col-body"><span style="color:var(--rd);font-weight:600;">BITU</span>, <span style="color:var(--rd);font-weight:600;">VOO</span>, <span style="color:var(--rd);font-weight:600;">XLE</span></div></div></div>
-<div class="strat-tac-title">종목별 전술 판단</div><div class="strat-tac-list"><div class="strat-tac-item"><div class="strat-tac-action" style="color:var(--or);">BITU: 매수 보류</div><div class="strat-tac-detail">Bucket=High Beta · Leveraged Risk · Trend=Downtrend · RSI=Neutral · 목표 비중 부족이나 Regime 비선호 및 추세 약세</div></div><div class="strat-tac-item"><div class="strat-tac-action" style="color:var(--rd);">IAUM: 분할 축소 후보</div><div class="strat-tac-detail">Bucket=Hard Asset · Gold · Trend=Downtrend · RSI=Neutral · -$2,198.00 · 선호 자산이므로 전량 축소보다 점진 조정</div></div><div class="strat-tac-item"><div class="strat-tac-action" style="color:var(--gn);">SGOV: 적극 매수 후보</div><div class="strat-tac-detail">Bucket=Cash · Cash-like · Trend=Uptrend · RSI=Overbought · +$1,846.92</div></div><div class="strat-tac-item"><div class="strat-tac-action" style="color:var(--rd);">VOO: 축소 우선 후보</div><div class="strat-tac-detail">Bucket=Core Equity · Trend=Downtrend · RSI=Oversold · -$7,956.72</div></div><div class="strat-tac-item"><div class="strat-tac-action" style="color:var(--rd);">XLE: 분할 축소 후보</div><div class="strat-tac-detail">Bucket=Cyclical · Energy · Trend=Strong Uptrend · RSI=Overbought · -$1,879.40</div></div></div></div></div>
-<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;"><div class="act-col trim"><h4>⬇ 축소 관찰</h4><div class="act-item"><div class="act-row"><span class="act-ticker">VOO</span><span class="act-amt neg">−$7,957</span></div><div class="act-note">목표 대비 7.6%p 초과 — 비중 정상화 핵심</div></div>
-<div class="act-item"><div class="act-row"><span class="act-ticker">IAUM</span><span class="act-amt neg">−$2,198</span></div><div class="act-note">방어 자산이더라도 현재 비중이 목표보다 높다면 전량보다 점진 조정이 적절하다.</div></div>
-<div class="act-item"><div class="act-row"><span class="act-ticker">XLE</span><span class="act-amt neg">−$1,879</span></div><div class="act-note">Risk Off 전술 자산 최우선 축소</div></div></div><div class="act-col buy"><h4>⬆ 매수 관찰</h4><div class="act-item"><div class="act-note">—</div></div></div><div class="act-col block"><h4>⛔ Blocked</h4><div class="act-item"><div class="act-row"><span class="act-ticker">BITU</span><span class="act-amt pos">+$10,187</span></div><div class="act-note">Risk Off 레버리지 차단 — 추세 전환 후 재검토</div></div><div style="margin-top:8px;padding-top:8px;border-top:1px solid var(--bd);"><div style="font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--t3);margin-bottom:6px;font-family:var(--mono);">Hold</div><div class="act-item"><div class="act-row"><span class="act-ticker">SGOV</span><span class="act-amt pos">+$1,847</span></div><div class="act-note">현금성 및 방어 목적 보강 관점에서 분할 매수 접근이 가능하다.</div></div></div></div></div></div>
-
-<!-- 9. Execution Plan -->
-<div class="sec an d7"><div class="sec-h">Next Execution Plan</div>
-<div class="conclusion"><div class="conc-grid">
-<div class="conc-item"><div class="cl">State</div><div class="cv" style="color:var(--rd);">Risk Off</div></div>
-<div class="conc-item"><div class="cl">Regime</div><div class="cv" style="color:var(--rd);">Risk Off</div></div>
-<div class="conc-item"><div class="cl">Score</div><div class="cv" style="color:var(--rd);">−2</div></div>
-<div class="conc-item"><div class="cl">Exec</div><div class="cv" style="color:var(--t3);">NO</div></div>
-</div>
-<div class="step-title">📋 다음 실행 계획</div>
-<div class="step-grid"><div class="step-card trim"><div class="step-num">1</div><div class="step-body"><div class="st">VOO</div><div class="sa">축소</div><div class="sm">−$7,957</div></div><span class="step-pri HIGH">HIGH</span></div><div class="step-card trim"><div class="step-num">2</div><div class="step-body"><div class="st">IAUM</div><div class="sa">축소</div><div class="sm">−$2,198</div></div><span class="step-pri HIGH">HIGH</span></div><div class="step-card trim"><div class="step-num">3</div><div class="step-body"><div class="st">XLE</div><div class="sa">축소</div><div class="sm">−$1,879</div></div><span class="step-pri HIGH">HIGH</span></div><div class="step-card block"><div class="step-num">4</div><div class="step-body"><div class="st">BITU</div><div class="sa">재검토 대기</div><div class="sm">+$10,187</div></div><span class="step-pri LOW">LOW</span></div></div>
-<div class="conc-text">Under: <strong style="color:var(--bl);">BITU</strong> (+$10,187) · Over: <strong style="color:var(--rd);">VOO</strong> (−$7,957)<br>
-<strong style="color:var(--or);">방어력 유지 우선.</strong></div></div></div>
-
-<!-- 10. Risk Monitor (★ 3단계) -->
-<div class="sec an d7"><div class="sec-h">Risk Monitor</div><div class="sec-sum">CRITICAL 2건, WARNING 1건</div><div class="risk-box"><div class="risk-section"><div class="risk-tier-label critical">CRITICAL — 즉시 대응</div><div class="risk-list"><div class="risk-item critical"><span class="ri">🔴</span><span>VOO 비중이 57.58%로 코어 자산 한도(55.00%)를 초과함</span></div><div class="risk-item critical"><span class="ri">🔴</span><span>VOO 비중이 57.58%로 최대 단일 자산 한도를 초과했음</span></div></div></div><div class="risk-section"><div class="risk-tier-label warning">WARNING — 주시</div><div class="risk-list"><div class="risk-item warning"><span class="ri">🟠</span><span>상위 2개 자산 비중 합계가 70.82%로 집중도가 높은 편</span></div><div class="risk-item warning"><span class="ri">🟠</span><span>VIX <strong>30.6</strong> — 공포 구간 진입</span></div></div></div><div class="risk-section"><div class="risk-tier-label watch">WATCH — 참고</div><div class="risk-list"><div class="risk-item watch"><span class="ri">🟡</span><span>금리 <strong>4.34%</strong> — 중립 이상</span></div><div class="risk-item watch"><span class="ri">🟡</span><span>DXY <strong>100.48</strong> — 강달러 시 원화 환산 영향</span></div></div></div></div></div>
-
-<!-- 11. Performance History -->
-<div class="sec an d8"><div class="sec-h">Performance History</div><div class="card" style="padding:20px;"><h3>Performance History</h3>
-<div class="chart-grid">
-<div style="position:relative;height:200px;"><canvas id="scoreChart"></canvas></div>
-<div style="position:relative;height:200px;"><canvas id="valueChart"></canvas></div>
-<div style="position:relative;height:200px;"><canvas id="vixChart"></canvas></div>
-<div style="position:relative;height:200px;"><canvas id="spxChart"></canvas></div>
-<div style="position:relative;height:200px;"><canvas id="spreadChart"></canvas></div>
-<div style="position:relative;height:200px;"><canvas id="krwChart"></canvas></div>
 </div></div>
+
+<!-- Strategy & Actions -->
+<div class="sec an d6"><div class="sec-h">Strategy & Actions</div><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;"><div class="act-col trim"><h4>⬇ 축소</h4><div class="act-item"><div class="act-row"><span class="act-ticker">VOO</span><span class="act-amt neg">−$7,957</span></div><div class="act-note">코어 자산이라도 현재는 과다 비중 상태이므로, 비중 정상화 차원의 분할 축소가 적절하다.</div></div><div class="act-item"><div class="act-row"><span class="act-ticker">IAUM</span><span class="act-amt neg">−$2,198</span></div><div class="act-note">방어 자산이더라도 현재 비중이 목표보다 높다면 전량보다 점진 조정이 적절하다.</div></div><div class="act-item"><div class="act-row"><span class="act-ticker">XLE</span><span class="act-amt neg">−$1,879</span></div><div class="act-note">전술 자산은 방어 장세에서 우선순위가 낮아 점진 축소 대상이 될 수 있다.</div></div></div><div class="act-col buy"><h4>⬆ 매수</h4><div class="act-item"><div class="act-note">—</div></div></div><div class="act-col block"><h4>⛔ Blocked</h4><div class="act-item"><div class="act-row"><span class="act-ticker">BITU</span><span class="act-amt pos">+$10,187</span></div><div class="act-note">현재 구간에서는 레버리지 자산 신규 확대를 금지하고, 추세 회복 확인 전까지 대기하는 편이 적절하다.</div></div></div></div></div>
+
+<!-- Risk Monitor -->
+<div class="sec an d7"><div class="sec an d7"><div class="sec-h">📊 Analytics</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;"><div class="card">
+<h3>📊 Profit Contribution (Waterfall)</h3>
+<div style="display:flex;gap:6px;align-items:flex-end;height:120px;margin:12px 0;padding-bottom:4px;border-bottom:1px solid rgba(255,255,255,.06);">
+<div style="display:flex;flex-direction:column;align-items:center;flex:1;">
+<div style="font-size:9px;font-family:'JetBrains Mono',monospace;font-weight:700;color:#22c55e;margin-bottom:2px;">+$5,085</div>
+<div style="width:100%;height:30.243347672161104px;background:#22c55e;border-radius:4px 4px 0 0;min-height:4px;transition:height .4s;"></div>
+<div style="font-size:8px;font-family:'JetBrains Mono',monospace;color:#8892a8;margin-top:4px;">VOO</div>
+<div style="font-size:7px;font-family:'JetBrains Mono',monospace;color:#4a5568;">+9.2%</div>
+</div><div style="display:flex;flex-direction:column;align-items:center;flex:1;">
+<div style="font-size:9px;font-family:'JetBrains Mono',monospace;font-weight:700;color:#22c55e;margin-bottom:2px;">+$2,555</div>
+<div style="width:100%;height:15.196857512657505px;background:#22c55e;border-radius:4px 4px 0 0;min-height:4px;transition:height .4s;"></div>
+<div style="font-size:8px;font-family:'JetBrains Mono',monospace;color:#8892a8;margin-top:4px;">IAUM</div>
+<div style="font-size:7px;font-family:'JetBrains Mono',monospace;color:#4a5568;">+25.2%</div>
+</div><div style="display:flex;flex-direction:column;align-items:center;flex:1;">
+<div style="font-size:9px;font-family:'JetBrains Mono',monospace;font-weight:700;color:#22c55e;margin-bottom:2px;">+$301</div>
+<div style="width:100%;height:8px;background:#22c55e;border-radius:4px 4px 0 0;min-height:4px;transition:height .4s;"></div>
+<div style="font-size:8px;font-family:'JetBrains Mono',monospace;color:#8892a8;margin-top:4px;">XLE</div>
+<div style="font-size:7px;font-family:'JetBrains Mono',monospace;color:#4a5568;">+4.4%</div>
+</div><div style="display:flex;flex-direction:column;align-items:center;flex:1;">
+<div style="font-size:9px;font-family:'JetBrains Mono',monospace;font-weight:700;color:#22c55e;margin-bottom:2px;">+$33</div>
+<div style="width:100%;height:8px;background:#22c55e;border-radius:4px 4px 0 0;min-height:4px;transition:height .4s;"></div>
+<div style="font-size:8px;font-family:'JetBrains Mono',monospace;color:#8892a8;margin-top:4px;">SGOV</div>
+<div style="font-size:7px;font-family:'JetBrains Mono',monospace;color:#4a5568;">+0.2%</div>
+</div><div style="display:flex;flex-direction:column;align-items:center;flex:1;">
+<div style="font-size:9px;font-family:'JetBrains Mono',monospace;font-weight:700;color:#ef4444;margin-bottom:2px;">$-16,812</div>
+<div style="width:100%;height:100.0px;background:#ef4444;border-radius:4px 4px 0 0;min-height:4px;transition:height .4s;"></div>
+<div style="font-size:8px;font-family:'JetBrains Mono',monospace;color:#8892a8;margin-top:4px;">BITU</div>
+<div style="font-size:7px;font-family:'JetBrains Mono',monospace;color:#4a5568;">-60.9%</div>
+</div>
+</div>
+<div style="text-align:right;font-family:'JetBrains Mono',monospace;font-size:12px;color:#ef4444;font-weight:700;">합계 $8,838</div>
+</div><div class="card">
+<h3>📊 Correlation Matrix (60일)</h3>
+<div style="display:grid;grid-template-columns:auto 1fr 1fr 1fr 1fr 1fr 1fr ;gap:2px;margin-top:8px;">
+<div style="background:transparent;"></div><div style="font-size:9px;font-family:'JetBrains Mono',monospace;color:#8892a8;text-align:center;padding:4px 2px;">VOO</div><div style="font-size:9px;font-family:'JetBrains Mono',monospace;color:#8892a8;text-align:center;padding:4px 2px;">BITU</div><div style="font-size:9px;font-family:'JetBrains Mono',monospace;color:#8892a8;text-align:center;padding:4px 2px;">IAUM</div><div style="font-size:9px;font-family:'JetBrains Mono',monospace;color:#8892a8;text-align:center;padding:4px 2px;">XLE</div><div style="font-size:9px;font-family:'JetBrains Mono',monospace;color:#8892a8;text-align:center;padding:4px 2px;">TLT</div><div style="font-size:9px;font-family:'JetBrains Mono',monospace;color:#8892a8;text-align:center;padding:4px 2px;">BTC</div><div style="font-size:9px;font-family:'JetBrains Mono',monospace;color:#8892a8;display:flex;align-items:center;padding:0 4px;">VOO</div><div style="background:rgba(59,130,246,0.15);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:8px;font-family:'JetBrains Mono',monospace;font-weight:700;color:#60a5fa;aspect-ratio:1;min-height:32px;">1.00</div><div style="background:rgba(34,197,94,0.35);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:8px;font-family:'JetBrains Mono',monospace;font-weight:700;color:#22c55e;aspect-ratio:1;min-height:32px;">0.70</div><div style="background:rgba(34,197,94,0.14);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:8px;font-family:'JetBrains Mono',monospace;font-weight:700;color:#8892a8;aspect-ratio:1;min-height:32px;">0.28</div><div style="background:rgba(34,197,94,0.02);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:8px;font-family:'JetBrains Mono',monospace;font-weight:700;color:#8892a8;aspect-ratio:1;min-height:32px;">0.04</div><div style="background:rgba(34,197,94,0.11);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:8px;font-family:'JetBrains Mono',monospace;font-weight:700;color:#8892a8;aspect-ratio:1;min-height:32px;">0.21</div><div style="background:rgba(34,197,94,0.32);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:8px;font-family:'JetBrains Mono',monospace;font-weight:700;color:#22c55e;aspect-ratio:1;min-height:32px;">0.65</div><div style="font-size:9px;font-family:'JetBrains Mono',monospace;color:#8892a8;display:flex;align-items:center;padding:0 4px;">BITU</div><div style="background:rgba(34,197,94,0.35);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:8px;font-family:'JetBrains Mono',monospace;font-weight:700;color:#22c55e;aspect-ratio:1;min-height:32px;">0.70</div><div style="background:rgba(59,130,246,0.15);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:8px;font-family:'JetBrains Mono',monospace;font-weight:700;color:#60a5fa;aspect-ratio:1;min-height:32px;">1.00</div><div style="background:rgba(34,197,94,0.13);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:8px;font-family:'JetBrains Mono',monospace;font-weight:700;color:#8892a8;aspect-ratio:1;min-height:32px;">0.27</div><div style="background:rgba(34,197,94,0.03);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:8px;font-family:'JetBrains Mono',monospace;font-weight:700;color:#8892a8;aspect-ratio:1;min-height:32px;">0.06</div><div style="background:rgba(239,68,68,0.06);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:8px;font-family:'JetBrains Mono',monospace;font-weight:700;color:#8892a8;aspect-ratio:1;min-height:32px;">-0.11</div><div style="background:rgba(34,197,94,0.48);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:8px;font-family:'JetBrains Mono',monospace;font-weight:700;color:#22c55e;aspect-ratio:1;min-height:32px;">0.96</div><div style="font-size:9px;font-family:'JetBrains Mono',monospace;color:#8892a8;display:flex;align-items:center;padding:0 4px;">IAUM</div><div style="background:rgba(34,197,94,0.14);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:8px;font-family:'JetBrains Mono',monospace;font-weight:700;color:#8892a8;aspect-ratio:1;min-height:32px;">0.28</div><div style="background:rgba(34,197,94,0.13);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:8px;font-family:'JetBrains Mono',monospace;font-weight:700;color:#8892a8;aspect-ratio:1;min-height:32px;">0.27</div><div style="background:rgba(59,130,246,0.15);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:8px;font-family:'JetBrains Mono',monospace;font-weight:700;color:#60a5fa;aspect-ratio:1;min-height:32px;">1.00</div><div style="background:rgba(34,197,94,0.20);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:8px;font-family:'JetBrains Mono',monospace;font-weight:700;color:#22c55e;aspect-ratio:1;min-height:32px;">0.40</div><div style="background:rgba(34,197,94,0.00);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:8px;font-family:'JetBrains Mono',monospace;font-weight:700;color:#8892a8;aspect-ratio:1;min-height:32px;">0.01</div><div style="background:rgba(34,197,94,0.11);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:8px;font-family:'JetBrains Mono',monospace;font-weight:700;color:#8892a8;aspect-ratio:1;min-height:32px;">0.21</div><div style="font-size:9px;font-family:'JetBrains Mono',monospace;color:#8892a8;display:flex;align-items:center;padding:0 4px;">XLE</div><div style="background:rgba(34,197,94,0.02);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:8px;font-family:'JetBrains Mono',monospace;font-weight:700;color:#8892a8;aspect-ratio:1;min-height:32px;">0.04</div><div style="background:rgba(34,197,94,0.03);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:8px;font-family:'JetBrains Mono',monospace;font-weight:700;color:#8892a8;aspect-ratio:1;min-height:32px;">0.06</div><div style="background:rgba(34,197,94,0.20);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:8px;font-family:'JetBrains Mono',monospace;font-weight:700;color:#22c55e;aspect-ratio:1;min-height:32px;">0.40</div><div style="background:rgba(59,130,246,0.15);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:8px;font-family:'JetBrains Mono',monospace;font-weight:700;color:#60a5fa;aspect-ratio:1;min-height:32px;">1.00</div><div style="background:rgba(239,68,68,0.16);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:8px;font-family:'JetBrains Mono',monospace;font-weight:700;color:#ef4444;aspect-ratio:1;min-height:32px;">-0.32</div><div style="background:rgba(34,197,94,0.01);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:8px;font-family:'JetBrains Mono',monospace;font-weight:700;color:#8892a8;aspect-ratio:1;min-height:32px;">0.02</div><div style="font-size:9px;font-family:'JetBrains Mono',monospace;color:#8892a8;display:flex;align-items:center;padding:0 4px;">TLT</div><div style="background:rgba(34,197,94,0.11);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:8px;font-family:'JetBrains Mono',monospace;font-weight:700;color:#8892a8;aspect-ratio:1;min-height:32px;">0.21</div><div style="background:rgba(239,68,68,0.06);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:8px;font-family:'JetBrains Mono',monospace;font-weight:700;color:#8892a8;aspect-ratio:1;min-height:32px;">-0.11</div><div style="background:rgba(34,197,94,0.00);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:8px;font-family:'JetBrains Mono',monospace;font-weight:700;color:#8892a8;aspect-ratio:1;min-height:32px;">0.01</div><div style="background:rgba(239,68,68,0.16);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:8px;font-family:'JetBrains Mono',monospace;font-weight:700;color:#ef4444;aspect-ratio:1;min-height:32px;">-0.32</div><div style="background:rgba(59,130,246,0.15);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:8px;font-family:'JetBrains Mono',monospace;font-weight:700;color:#60a5fa;aspect-ratio:1;min-height:32px;">1.00</div><div style="background:rgba(239,68,68,0.06);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:8px;font-family:'JetBrains Mono',monospace;font-weight:700;color:#8892a8;aspect-ratio:1;min-height:32px;">-0.12</div><div style="font-size:9px;font-family:'JetBrains Mono',monospace;color:#8892a8;display:flex;align-items:center;padding:0 4px;">BTC</div><div style="background:rgba(34,197,94,0.32);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:8px;font-family:'JetBrains Mono',monospace;font-weight:700;color:#22c55e;aspect-ratio:1;min-height:32px;">0.65</div><div style="background:rgba(34,197,94,0.48);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:8px;font-family:'JetBrains Mono',monospace;font-weight:700;color:#22c55e;aspect-ratio:1;min-height:32px;">0.96</div><div style="background:rgba(34,197,94,0.11);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:8px;font-family:'JetBrains Mono',monospace;font-weight:700;color:#8892a8;aspect-ratio:1;min-height:32px;">0.21</div><div style="background:rgba(34,197,94,0.01);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:8px;font-family:'JetBrains Mono',monospace;font-weight:700;color:#8892a8;aspect-ratio:1;min-height:32px;">0.02</div><div style="background:rgba(239,68,68,0.06);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:8px;font-family:'JetBrains Mono',monospace;font-weight:700;color:#8892a8;aspect-ratio:1;min-height:32px;">-0.12</div><div style="background:rgba(59,130,246,0.15);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:8px;font-family:'JetBrains Mono',monospace;font-weight:700;color:#60a5fa;aspect-ratio:1;min-height:32px;">1.00</div>
+</div>
+<div style="font-size:9px;color:#4a5568;margin-top:8px;">🟢 양의 상관 (동반 움직임) · 🔴 음의 상관 (반대 움직임)</div>
+</div></div></div>
+<div class="sec-h">Risk Monitor</div><div class="risk-box"><div class="risk-section"><div class="risk-tier-label critical">CRITICAL</div><div class="risk-item"><span class="ri">🔴</span>VOO 비중이 57.58%로 코어 자산 한도(55.00%)를 초과함</div></div><div class="risk-section"><div class="risk-tier-label warning">WARNING</div><div class="risk-item"><span class="ri">🟠</span>VIX 28.6 — 변동성 확대</div></div></div></div>
+
+<!-- Performance History -->
+<div class="sec an d8"><div class="sec-h">Performance History</div><div class="card"><h3>Performance History</h3>
+<div class="chart-grid"><div style="height:200px;"><canvas id="sc"></canvas></div><div style="height:200px;"><canvas id="vc"></canvas></div></div></div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <script>
-const dates=['03-21', '03-23', '03-25', '03-26', '03-27', '03-28', '03-29', '03-30', '03-31'];
-const cOpt=(label,data,color,fill)=>({type:'line',data:{labels:dates,datasets:[{label:label,data:data,borderColor:color,backgroundColor:fill?color+'15':'transparent',fill:fill,tension:.3,borderWidth:2,pointRadius:data.length<=7?4:2,pointBackgroundColor:color}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},title:{display:true,text:label,color:'#8892a8',font:{size:10,weight:700,family:'JetBrains Mono'},padding:{bottom:8}}},scales:{x:{ticks:{color:'#4a5568',font:{size:9,family:'JetBrains Mono'}},grid:{color:'rgba(255,255,255,.03)'}},y:{ticks:{color:'#4a5568',font:{size:9,family:'JetBrains Mono'}},grid:{color:'rgba(255,255,255,.03)'}}}}});
-new Chart(document.getElementById('scoreChart'),cOpt('Market Score',[-5, -7, -1, 0, -5, -5, -5, -5, -2],'#ef4444',false));
-new Chart(document.getElementById('valueChart'),cOpt('Portfolio Value ($)',[111421, 111421, 111640, 112697, 109841, 105029, 105029, 105029, 104920],'#3b82f6',true));
-new Chart(document.getElementById('vixChart'),cOpt('VIX',[26.78, 30.27, 25.71, 27.3, 27.44, 31.05, 31.05, 30.84, 30.61],'#f59e0b',false));
-new Chart(document.getElementById('spxChart'),cOpt('S&P 500',[6506.48, 6506.48, 6556.37, 6591.9, 6477.16, 6368.85, 6368.85, 6368.85, 6343.72],'#22c55e',true));
-new Chart(document.getElementById('spreadChart'),cOpt('10Y-2Y Spread (%p)',[null, null, null, null, null, 0.83, 0.83, 0.83, 0.74],'#a78bfa',false));
-new Chart(document.getElementById('krwChart'),cOpt('USD/KRW (₩)',[null, null, null, null, null, 1508.36, 1508.06, 1516.11, 1507.02],'#22d3ee',true));
+const d=['03-21', '03-23', '03-25', '03-26', '03-27', '03-28', '03-29', '03-30', '03-31'];
+const o=(l,dt,c,f)=>({type:'line',data:{labels:d,datasets:[{label:l,data:dt,borderColor:c,backgroundColor:f?c+'15':'transparent',fill:f,tension:.3,borderWidth:2,pointRadius:dt.length<=7?4:2,pointBackgroundColor:c}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},title:{display:true,text:l,color:'#8892a8',font:{size:10,weight:700,family:'Space Mono'}}},scales:{x:{ticks:{color:'#4a5568',font:{size:9,family:'Space Mono'}},grid:{color:'rgba(255,255,255,.03)'}},y:{ticks:{color:'#4a5568',font:{size:9,family:'Space Mono'}},grid:{color:'rgba(255,255,255,.03)'}}}}});
+new Chart(document.getElementById('sc'),o('Market Score',[-5, -7, -1, 0, -5, -5, -5, -5, -3],'#ef4444',false));
+new Chart(document.getElementById('vc'),o('Portfolio ($)',[111421, 111421, 111640, 112697, 109841, 105029, 105029, 105029, 104920],'#3b82f6',true));
 </script></div>
 
-<!-- 12. Learning Notes -->
-<div class="sec an d8"><div class="sec-h">Learning Notes — 오늘의 지표 해석</div><div class="learn-grid"><div class="learn-card"><div class="lc-title"><span class="lc-icon">📊</span>VIX (변동성 지수)</div><div class="lc-val" style="color:var(--rd);">30.6</div><div class="lc-body">VIX 30.6은 시장이 <strong>극도의 공포</strong> 상태라는 뜻입니다. 역사적으로 VIX 30 이상은 패닉 구간으로, 단기 급락 가능성이 높지만 동시에 과매도 반등의 기회가 될 수도 있습니다. 이 구간에서는 신규 매수보다 <strong>현금 비중 확보</strong>가 우선입니다.</div></div><div class="learn-card"><div class="lc-title"><span class="lc-icon">🏦</span>미국 10년물 금리</div><div class="lc-val" style="color:var(--or);">4.34%</div><div class="lc-body">10년물 금리 4.34%는 <strong>중립적</strong> 수준입니다. 금리 방향에 주목하세요.</div></div><div class="learn-card"><div class="lc-title"><span class="lc-icon">💵</span>달러 인덱스 (DXY)</div><div class="lc-val" style="color:var(--or);">100.5</div><div class="lc-body">달러 인덱스 100.5은 <strong>보통</strong> 수준입니다.</div></div><div class="learn-card"><div class="lc-title"><span class="lc-icon">🎯</span>오늘의 시장 점수 해석</div><div class="lc-val" style="color:var(--rd);">-2점</div><div class="lc-body">시장 점수 -2점은 <strong>방어 모드</strong>입니다.</div></div><div class="learn-card"><div class="lc-title"><span class="lc-icon">📐</span>장단기 금리차 (10Y-2Y)</div><div class="lc-val" style="color:var(--gn);">0.74%p</div><div class="lc-body">장단기 금리차 0.74%p로 <strong>정상적인 양(+)의 기울기</strong>입니다.</div></div><div class="learn-card"><div class="lc-title"><span class="lc-icon">🇰🇷</span>달러-원 환율</div><div class="lc-val" style="color:var(--rd);">₩1,507</div><div class="lc-body">달러-원 환율 1,507원은 <strong>원화 약세</strong> 구간입니다.</div></div><div class="learn-card"><div class="lc-title"><span class="lc-icon">🔶</span>구리 (경기 선행지표)</div><div class="lc-val" style="color:var(--or);">$5.50</div><div class="lc-body">구리 가격 $5.50은 <strong>소폭 상승</strong>. 뚜렷한 방향 신호는 제한적.</div></div><div class="learn-card"><div class="lc-title"><span class="lc-icon">📈</span>TIP (인플레 기대)</div><div class="lc-val" style="color:var(--or);">110.35</div><div class="lc-body">TIP(물가연동채) 110.35. 인플레이션 기대가 상승 중. 금리 민감 자산에 부담.</div></div><div class="learn-card"><div class="lc-title"><span class="lc-icon">🏢</span>HYG (신용 리스크)</div><div class="lc-val" style="color:var(--gn);">78.81</div><div class="lc-body">HYG(하이일드 회사채) 78.81. 안정적. 신용경색 없이 시장 스트레스 제한적.</div></div></div></div>
-
-<footer class="footer">MACRO ETF INTELLIGENCE · 2026-03-31 · v5.3 · 데이터 기준 2026-03-31</footer>
+<footer class="footer">MACRO ETF INTELLIGENCE v6.0 · 2026-03-31 · 데이터 기준 2026-03-31</footer>
+<div class="sec an d5">
+<div class="sec-h">🎭 Scenario Simulation</div>
+<div class="sec-sum">"만약 ~라면?" 시장 점수 시뮬레이션</div>
+<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;"><div style="background:#0c1017;border:2px solid #ef4444;border-radius:12px;padding:14px;text-align:center;">
+<div style="font-size:10px;font-weight:700;color:#ef4444;margin-bottom:6px;">📍 현재</div>
+<div style="font-size:32px;font-weight:900;font-family:'JetBrains Mono',monospace;color:#ef4444;">-3</div>
+</div><div style="background:#0a0f1a;border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:14px;text-align:center;">
+<div style="font-size:10px;font-weight:700;color:#8892a8;margin-bottom:6px;">시장 급락</div>
+<div style="font-size:28px;font-weight:900;font-family:'JetBrains Mono',monospace;color:#ef4444;">-7</div>
+<div style="font-size:9px;color:#ef4444;font-family:'JetBrains Mono',monospace;margin-top:4px;">-4 vs 현재</div>
+<div style="font-size:8px;color:#4a5568;margin-top:2px;">Strong Risk Off</div>
+</div><div style="background:#0a0f1a;border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:14px;text-align:center;">
+<div style="font-size:10px;font-weight:700;color:#8892a8;margin-bottom:6px;">금리 급등</div>
+<div style="font-size:28px;font-weight:900;font-family:'JetBrains Mono',monospace;color:#ef4444;">-6</div>
+<div style="font-size:9px;color:#ef4444;font-family:'JetBrains Mono',monospace;margin-top:4px;">-3 vs 현재</div>
+<div style="font-size:8px;color:#4a5568;margin-top:2px;">Strong Risk Off</div>
+</div><div style="background:#0a0f1a;border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:14px;text-align:center;">
+<div style="font-size:10px;font-weight:700;color:#8892a8;margin-bottom:6px;">리스크온 랠리</div>
+<div style="font-size:28px;font-weight:900;font-family:'JetBrains Mono',monospace;color:#22c55e;">+9</div>
+<div style="font-size:9px;color:#22c55e;font-family:'JetBrains Mono',monospace;margin-top:4px;">+12 vs 현재</div>
+<div style="font-size:8px;color:#4a5568;margin-top:2px;">Strong Risk On</div>
+</div><div style="background:#0a0f1a;border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:14px;text-align:center;">
+<div style="font-size:10px;font-weight:700;color:#8892a8;margin-bottom:6px;">스태그플레이션</div>
+<div style="font-size:28px;font-weight:900;font-family:'JetBrains Mono',monospace;color:#ef4444;">-5</div>
+<div style="font-size:9px;color:#ef4444;font-family:'JetBrains Mono',monospace;margin-top:4px;">-2 vs 현재</div>
+<div style="font-size:8px;color:#4a5568;margin-top:2px;">Strong Risk Off</div>
+</div></div>
+</div>
 </div></body></html>
